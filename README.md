@@ -81,6 +81,13 @@ The purpose of Diet Delight is to deliver added value to Fit Life Gym members by
 
 ## R2: Dataflow Diagram
 
+### MVP 1 and 2
+
+![Epic 1 and 2 dataflow](docs/Epic1&2.png)
+
+### MVP 3
+
+![Epic 3 dataflow](docs/Epic3.png)
 
 ## R3: Application Architecture Diagram
 
@@ -98,5 +105,24 @@ The backend temporarily saves recipe data retrieved from the third-party Edamam 
 
 ## R5: Wireframes
 
+### Homepage
+
+![Home Page](docs/1_Home_Page.png)
+
+### Dietary  Selection
+
+![Dietary Selection](docs/2_Dietary_Selection.png)
+
+### Recipe Preview
+
+![Recipe Preview](docs/3_Previews_Page.png)
+
+### Recipe Details
+
+![Recipe Details](docs/4_Show_Recipe.png)
+
+### Recipes PDF Preview (Print Page)
+
+![Recipes PDF](docs/5._Print_Recipes.png)
 
 ## R6: Screenshots of Trello board
