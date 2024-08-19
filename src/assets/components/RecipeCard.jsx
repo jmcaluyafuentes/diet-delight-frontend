@@ -1,0 +1,1 @@
+// Component for displaying a recipe preview
