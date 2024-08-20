@@ -1,4 +1,4 @@
-# Diet Delight
+# Diet Delight "Hello There"
 
 A full stack web application by John Fuentes, Hy Nguyen and Branden Chiem.
 
