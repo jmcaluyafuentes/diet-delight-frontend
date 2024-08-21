@@ -1,56 +1,48 @@
 import React, { useState } from 'react';
+import CheckboxGroup from '../components/CheckboxGroup.jsx';
 
 const DietarySelection = ({ onFetchRecipes }) => {
     const [dietCriteria, setDietCriteria] = useState([]);
     const [healthCriteria, setHealthCriteria] = useState([]);
 
     const handleCheckboxChange = (event, type) => {
-        const value = event.target.value;
-        if (type === 'diet') {
-            setDietCriteria(prev =>
-                prev.includes(value) ? prev.filter(item => item !== value) : [...prev, value]
-            );
-        } else if (type === 'health') {
-            setHealthCriteria(prev =>
-                prev.includes(value) ? prev.filter(item => item !== value) : [...prev, value]
-            );
-        }
+      const value = event.target.value;
+      if (type === 'diet') {
+          setDietCriteria(prev =>
+              prev.includes(value) ? prev.filter(item => item !== value) : [...prev, value]
+          );
+      } else if (type === 'health') {
+          setHealthCriteria(prev =>
+              prev.includes(value) ? prev.filter(item => item !== value) : [...prev, value]
+          );
+      }
     };
 
     const handleSearch = () => {
         onFetchRecipes(dietCriteria, healthCriteria);
     };
 
+    const dietOptions = ['balanced', 'high-fiber', 'high-protein', 'low-carb', 'low-fat', 'low-sodium'];
+    const healthOptions = ['dairy-free', 'egg-free', 'gluten-free', 'low-potasium', 'low-sugar', 'Mediterranean', 'mustard-free', 'no-oil-added', 'soy-free', 'sugar-conscious', 'tree-nut-free', 'vegan', 'vegetarian', 'wheat-free'];
+
     return (
         <div className="container">
-            <h1 className="title is-3">Select Your Dietary and Health Criteria</h1>
+            <h1 className="title is-3 mt-6">Select Your Dietary and Health Criteria</h1>
             <div className="columns mt-5">
-                <div className="column is-half">
-                    <h2 className="subtitle is-4">Dietary Preferences</h2>
-                    <label className="checkbox">
-                        <input type="checkbox" value="balanced" onChange={(e) => handleCheckboxChange(e, 'diet')} />
-                        balanced
-                    </label>
-                    <label className="checkbox">
-                        <input type="checkbox" value="high-fiber" onChange={(e) => handleCheckboxChange(e, 'diet')} />
-                        high-fiber
-                    </label>
-                    {/* Add more dietary options as needed */}
-                </div>
-                <div className="column is-half">
-                    <h2 className="subtitle is-4">Health Considerations</h2>
-                    <label className="checkbox">
-                        <input type="checkbox" value="dairy-free" onChange={(e) => handleCheckboxChange(e, 'health')} />
-                        dairy-free
-                    </label>
-                    <label className="checkbox">
-                        <input type="checkbox" value="egg-free" onChange={(e) => handleCheckboxChange(e, 'health')} />
-                        egg-free
-                    </label>
-                    {/* Add more health options as needed */}
-                </div>
+              <CheckboxGroup
+                title="Dietary Preferences"
+                options={dietOptions}
+                selectedOptions={dietCriteria}
+                onChange={handleCheckboxChange}
+              />
+              <CheckboxGroup
+                title="Health Considerations"
+                options={healthOptions}
+                selectedOptions={healthCriteria}
+                onChange={handleCheckboxChange}
+              />
             </div>
-            <button className="button is-primary mt-5" onClick={handleSearch}>Search</button>
+            <button className="button is-primary mt-5 mb-5" onClick={handleSearch}>Search</button>
         </div>
     );
 };
