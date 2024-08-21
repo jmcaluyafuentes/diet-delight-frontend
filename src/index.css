@@ -1,5 +1,12 @@
-@import "https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css";
+/* @import "https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css"; */
 
-h1 {
-  font-size: 2rem;
+.recipe {
+  border: 1px solid #ddd;
+  padding: 16px;
+  margin: 16px 0;
+}
+
+.recipe img {
+  max-width: 100%;
+  height: auto;
 }
