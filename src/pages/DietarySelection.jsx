@@ -1,86 +1,57 @@
 import React, { useState } from 'react';
 
-const dietOptions = [
-    'balanced',
-    'high-fiber',
-    'high-protein',
-    'low-carb',
-    'low-fat',
-    'low-sodium'
-];
-
-const healthOptions = [
-    'dairy-free',
-    'egg-free',
-    'gluten-free',
-    'low-potasium',
-    'low-sugar',
-    'Mediterranean',
-    'mustard-free',
-    'no-oil-added',
-    'red-meat-free',
-    'soy-free',
-    'sugar-conscious',
-    'tree-nut-free',
-    'vegan',
-    'vegetarian',
-    'wheat-free'
-];
-
 const DietarySelection = ({ onFetchRecipes }) => {
-    const [selectedDiet, setSelectedDiet] = useState([]);
-    const [selectedHealth, setSelectedHealth] = useState([]);
+    const [dietCriteria, setDietCriteria] = useState([]);
+    const [healthCriteria, setHealthCriteria] = useState([]);
 
     const handleCheckboxChange = (event, type) => {
         const value = event.target.value;
         if (type === 'diet') {
-            setSelectedDiet(prev =>
+            setDietCriteria(prev =>
                 prev.includes(value) ? prev.filter(item => item !== value) : [...prev, value]
             );
         } else if (type === 'health') {
-            setSelectedHealth(prev =>
+            setHealthCriteria(prev =>
                 prev.includes(value) ? prev.filter(item => item !== value) : [...prev, value]
             );
         }
     };
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        onFetchRecipes(selectedDiet, selectedHealth);
+    const handleSearch = () => {
+        onFetchRecipes(dietCriteria, healthCriteria);
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <fieldset>
-                <legend>Select Diet Categories</legend>
-                {dietOptions.map(option => (
-                    <label key={option}>
-                        <input
-                            type="checkbox"
-                            value={option}
-                            checked={selectedDiet.includes(option)}
-                            onChange={(e) => handleCheckboxChange(e, 'diet')}
-                        />
-                        {option}
+        <div className="container">
+            <h1 className="title is-3">Select Your Dietary and Health Criteria</h1>
+            <div className="columns mt-5">
+                <div className="column is-half">
+                    <h2 className="subtitle is-4">Dietary Preferences</h2>
+                    <label className="checkbox">
+                        <input type="checkbox" value="balanced" onChange={(e) => handleCheckboxChange(e, 'diet')} />
+                        balanced
                     </label>
-                ))}
-            </fieldset>
-            <fieldset>
-                <legend>Select Health Categories</legend>
-                {healthOptions.map(option => (
-                    <label key={option}>
-                        <input
-                            type="checkbox"
-                            value={option}
-                            checked={selectedHealth.includes(option)}
-                            onChange={(e) => handleCheckboxChange(e, 'health')}
-                        />
-                        {option}
+                    <label className="checkbox">
+                        <input type="checkbox" value="high-fiber" onChange={(e) => handleCheckboxChange(e, 'diet')} />
+                        high-fiber
                     </label>
-                ))}
-            </fieldset>
-            <button type="submit">Search Recipes</button>
-        </form>
+                    {/* Add more dietary options as needed */}
+                </div>
+                <div className="column is-half">
+                    <h2 className="subtitle is-4">Health Considerations</h2>
+                    <label className="checkbox">
+                        <input type="checkbox" value="dairy-free" onChange={(e) => handleCheckboxChange(e, 'health')} />
+                        dairy-free
+                    </label>
+                    <label className="checkbox">
+                        <input type="checkbox" value="egg-free" onChange={(e) => handleCheckboxChange(e, 'health')} />
+                        egg-free
+                    </label>
+                    {/* Add more health options as needed */}
+                </div>
+            </div>
+            <button className="button is-primary mt-5" onClick={handleSearch}>Search</button>
+        </div>
     );
 };
 
