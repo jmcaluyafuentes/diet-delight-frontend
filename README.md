@@ -88,14 +88,13 @@ The purpose of Diet Delight is to deliver added value to Fit Life Gym members by
 - Figma - For UI/UX design and prototyping.
 - Trello - For project management, tracking tasks, and collaboration.
 
-
 ## R2: Dataflow Diagram
 
-### MVP 1 and 2
+### Search and Print Recipes (MVP 1 and 2)
 
 ![Epic 1 and 2 dataflow](docs/Epic1&2.png)
 
-### MVP 3
+### Featured Recipes (MVP 3)
 
 ![Epic 3 dataflow](docs/Epic3.png)
 
@@ -109,22 +108,35 @@ The backend communicates with the Edamam API to fetch recipe data when users sea
 
 The backend temporarily saves recipe data retrieved from the third-party Edamam API in the database. This is particularly useful for featured recipes which are selected and stored in the database to be quickly accessed by users without repeatedly querying the external API. The database also manages CRUD operations for user accounts and saved recipes.
 
-
 ## R4: User Stories
+
 ### User Registration and Login
+
 * As a new user, I want to be able to register for an account so that I can access the application's features.
 * As an existing user, I want to be able to log in to my account securely so that I can access my personalized information.
+
 ### Dietary Category Search
+
 * As a user, I want to be able to search for dietary categories (e.g., high-protein, low-carb) based on my fitness goals, so that I can find recipes and meal plans that align with my objectives.
+
 * As a user, I want the search results to be personalized to my fitness goals and dietary preferences, so that I can easily find the most relevant information.
+
 ### Recipe Details
+
 * As a user, I want to be able to view detailed information about each recipe, such as the nutrient composition and recommended portion sizes, so that I can make informed decisions about my dietary choices.
+
 * As a user, I want the recipe details to be presented in a clear and easy-to-understand format, so that I can quickly grasp the key information.
+
 ### Meal Planning and Recipes
+
 * As a user, I want to be able to save my favorite recipes, so that I can easily access them for future meal planning.
+
 * As a user, I want to be able to create and save custom meal plans based on my dietary preferences and fitness goals, so that I can easily follow a personalized nutrition plan.
+
 ### Mobile Accessibility
+
 * As a user, I want the application to be optimized for mobile devices, so that I can access the features and content on the go.
+
 * As a user, I want the experience for mobile devices to be intuitive, so that I can easily navigate the application and find the information I need quickly.
 
 ## R5: Wireframes
@@ -149,10 +161,22 @@ The backend temporarily saves recipe data retrieved from the third-party Edamam 
 
 ![Recipes PDF](docs/5._Print_Recipes.png)
 
-## R6: Screenshots of Trello Board
+## R6: Screenshots of Trello board
+
+Our team used Trello to manage our tasks due to its good visual, straightforward and user-friendly components.
+
+Link to our Trello board --> https://trello.com/b/K1DuOj8t/diet-delight-web-app
+
+![Trello board](./docs/trelloboard.png)
+
 ### 14/08/2024
-![ToDo1.png](./docs/ToDo1.png)
-![ToDo2.png](./docs/ToDo2.png)
-![ToDo3.png](./docs/ToDo3.png)
-![ToDo4.png](./docs/ToDo4.png)
-![ToDo5.png](./docs/ToDo5.png)
+
+![ToDo1.png](./docs/ToDo1.png)  
+![ToDo2.png](./docs/ToDo2.png)  
+![ToDo3.png](./docs/ToDo3.png)  
+![ToDo4.png](./docs/ToDo4.png)  
+![ToDo5.png](./docs/ToDo5.png)  
+![ToDo6.png](./docs/ToDo6.png)  
+![ToDo7.png](./docs/ToDo7.png)  
+![ToDo8.png](./docs/ToDo8.png)  
+![ToDo9.png](./docs/ToDo9.png)  
