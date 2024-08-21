@@ -169,7 +169,7 @@ Link to our Trello board --> https://trello.com/b/K1DuOj8t/diet-delight-web-app
 
 ![Trello board](./docs/trelloboard.png)
 
-### 14/08/2024
+### 14/08/2024 - Tasks planning and delegation stage
 
 ![ToDo1.png](./docs/ToDo1.png)  
 ![ToDo2.png](./docs/ToDo2.png)  

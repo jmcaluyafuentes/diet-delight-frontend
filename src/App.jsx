@@ -1,30 +1,35 @@
-import React from 'react';
-import { Route, Routes } from 'react-router-dom';
-// import HomePage from './pages/HomePage';
-// import DietarySelectionPage from './pages/DietarySelectionPage';
-// import PreviewRecipesPage from './pages/PreviewRecipesPage';
-// import ShowRecipePage from './pages/ShowRecipePage';
-// import PrintRecipesPage from './pages/PrintRecipesPage';
-// import Header from './components/Header';
-// import Footer from './components/Footer';
-import './App.css'
+import React, { useState } from 'react';
+import DietarySelection from './pages/DietarySelection';
+import PreviewRecipes from './pages/PreviewRecipes';
 
 const App = () => {
-  return (
-    <>
-      <h1>Hello World</h1> {/* Test server running */}
-      
-      {/* <Header /> */}
-      {/* <Routes> */}
-        {/* <Route path="/" element={<HomePage />} /> */}
-        {/* <Route path="/dietary-selection" element={<DietarySelectionPage />} /> */}
-        {/* <Route path="/preview-recipes" element={<PreviewRecipesPage />} /> */}
-        {/* <Route path="/show-recipe/:id" element={<ShowRecipePage />} /> */}
-        {/* <Route path="/print-recipes" element={<PrintRecipesPage />} /> */}
-      {/* </Routes> */}
-      {/* <Footer /> */}
-    </>
-  );
+    const [recipes, setRecipes] = useState([]);
+
+    const fetchRecipes = async (dietCriteria, healthCriteria) => {
+        try {
+            const queryParams = new URLSearchParams();
+            dietCriteria.forEach(diet => queryParams.append('diet', diet));
+            healthCriteria.forEach(health => queryParams.append('health', health));
+
+            const response = await fetch(`https://diet-delight-backend.onrender.com/recipes?${queryParams.toString()}`);
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const data = await response.json();
+            setRecipes(data);
+        } catch (error) {
+            console.error('Error fetching recipes:', error);
+            setRecipes([]);
+        }
+    };
+
+    return (
+        <div>
+            <h1 className="title is-2 has-text-centered">Recipe Search</h1>
+            <DietarySelection onFetchRecipes={fetchRecipes} />
+            <PreviewRecipes recipes={recipes} />
+        </div>
+    );
 };
 
 export default App;
