@@ -7,12 +7,12 @@ function HeroBanner({ backgroundImage }) {
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     width: '100%',
-    minHeight: '50vh',
+    minHeight: '30vh',
     textAlign: 'center',
     position: 'relative',
     display: 'flex',
-    alignItems: 'flex-start',  // Align items at the top
-    justifyContent: 'center',  // Center horizontally
+    alignItems: 'flex-start',  
+    justifyContent: 'center',  
     color: 'white',
     marginBottom: 'auto'
   };
