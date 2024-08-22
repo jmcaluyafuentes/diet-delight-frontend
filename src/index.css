@@ -1,1 +1,13 @@
 @import "https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css";
+
+/* Ensure the text in the navbar menu is white when the menu is active */
+.navbar-menu.is-active .navbar-item {
+    color: black;
+    text-align: center;
+    font-size: 1.25rem;
+}
+
+/* Change the background color when navbar menu is active */
+.navbar-menu.is-active {
+    background-color: #65edd8;
+}
