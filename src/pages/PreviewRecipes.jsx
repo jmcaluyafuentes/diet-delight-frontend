@@ -109,13 +109,13 @@ const PreviewRecipes = ({ recipes }) => {
                         </div>
                         <div className="has-text-centered mt-3">
                         <button
-                            onClick={() => handleAddToPrint(recipe.instructionsUrl)}
+                            onClick={() => handleAddToPrint(recipe.instructionsUrl)} // Use unique property
                             className={`button is-link ${
-                            selectedRecipes.has(recipe.instructionsUrl) ? 'is-success' : ''
+                            selectedRecipes.has(recipe.instructionsUrl) ? 'is-danger' : ''
                             }`}
                         >
                             {selectedRecipes.has(recipe.instructionsUrl)
-                            ? 'Added to Print'
+                            ? 'Remove from Print'
                             : 'Add to Print'}
                         </button>
                         </div>
