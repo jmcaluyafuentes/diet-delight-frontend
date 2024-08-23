@@ -47,7 +47,9 @@ const RecipeDisplay = () => {
                         <div className="recipe card">
                                 <div className="card-image">
                                     <figure className="image">
-                                        <img src={recipe.image} alt={recipe.title} />
+                                        <a href={recipe.instructionsUrl} className="button is-primary ml-4">
+                                            <img src={recipe.image} alt={recipe.title} /> 
+                                        </a>
                                     </figure>
                                 </div>
                                 <div className="card-content">
@@ -61,21 +63,10 @@ const RecipeDisplay = () => {
                                         <p>Calories: {`${recipe.caloriesPerServing.toFixed(2)} kcal`}</p>
                                         <p>Serving Size: {recipe.servingSize}</p>
 
-                                        <h5 className="title is-5">Diet and Health Information:</h5>
                                         <p><strong>Diet Labels:</strong> {recipe.dietLabels.join(', ')}</p>
-                                        <p><strong>Health Labels:</strong> {recipe.healthLabels.join(', ')}</p>
 
-                                        <h5 className="title is-5">Ingredients:</h5>
-                                        <ul>
-                                            {recipe.ingredients.map((ingredient, index) => (
-                                                <li key={index}>{ingredient}</li>
-                                            ))}
-                                        </ul>
 
-                                        <h5 className="title is-5">Preparation:</h5>
-                                        <a href={recipe.instructionsUrl} className="button is-primary ml-4">
-                                            See instructions
-                                        </a>
+
                                         <p className="mt-2 ml-4">Source: <a href={recipe.instructionsUrl} target="_blank" rel="noopener noreferrer" className="has-text-info"><em>{recipe.source}</em></a></p>
                                     </div>
                                 </div>
