@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import './NavBar.css';
 
 const NavBar = () => {
-  useEffect(() => {
+    useEffect(() => {
     // Add click event listener to toggle hamburger menu
     const navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
 
@@ -18,7 +19,7 @@ const NavBar = () => {
             });
         });
     }
-  }, []);
+    }, []);
 
     return (
         <nav className="navbar has-background-primary" role="navigation" aria-label="main navigation">
@@ -27,10 +28,10 @@ const NavBar = () => {
                     <h1 className="title is-4 has-text-black ml-6">Diet Delight</h1>
                 </Link>
                 <Link role="button" aria-label="menu" aria-expanded="false" className="navbar-burger burger" data-target="navbarMenu">
-                  <span aria-hidden="true" className="has-text-black"></span>
-                  <span aria-hidden="true" className="has-text-black"></span>
-                  <span aria-hidden="true" className="has-text-black"></span>
-                  <span aria-hidden="true" className="has-text-black"></span>
+                    <span aria-hidden="true" className="has-text-black"></span>
+                    <span aria-hidden="true" className="has-text-black"></span>
+                    <span aria-hidden="true" className="has-text-black"></span>
+                    <span aria-hidden="true" className="has-text-black"></span>
                 </Link>
             </div>
 

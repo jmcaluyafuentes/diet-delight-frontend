@@ -1,0 +1,9 @@
+.navbar-menu.is-active .navbar-item {
+    color: black;
+    text-align: center;
+    font-size: 1.25rem;
+}
+
+.navbar-menu.is-active {
+    background-color: #65edd8;
+}
