@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './HomePreview.css'
 
 const dietOptions = ['balanced', 'high-fiber', 'high-protein', 'low-carb', 'low-fat', 'low-sodium'];
@@ -8,7 +9,9 @@ const getRandomElement = (array) => array[Math.floor(Math.random() * array.lengt
 
 const RecipeDisplay = () => {
     const [recipes, setRecipes] = useState([]);
+    const [selectedRecipes, setSelectedRecipes] = useState(new Set());
     const [randomDiet, setRandomDiet] = useState('');
+    const navigate = useNavigate();
     
     useEffect(() => {
         const fetchRecipes = async () => {
@@ -37,6 +40,27 @@ const RecipeDisplay = () => {
         fetchRecipes();
     }, []);
 
+    // Handle adding or removing recipes for printing
+    const handleAddToPrint = (recipeIdentifier) => {
+        setSelectedRecipes((prevSelected) => {
+            const updatedSelections = new Set(prevSelected);
+            if (updatedSelections.has(recipeIdentifier)) {
+                updatedSelections.delete(recipeIdentifier);
+            } else {
+                updatedSelections.add(recipeIdentifier);
+            }
+            return updatedSelections;
+        });
+    };
+
+    // Navigate to PrintPreview with the selected recipes
+    const handlePrintToPDF = () => {
+        const selectedRecipeDetails = recipes.filter((recipe) =>
+            selectedRecipes.has(recipe.instructionsUrl)
+        );
+        navigate('/print', { state: { recipes: selectedRecipeDetails } });
+    };
+
     return (
         <div className="recipe-display">
             <h2 className="title is-4 has-text-centered mt-5">
@@ -48,7 +72,7 @@ const RecipeDisplay = () => {
                         <div className="recipe card">
                                 <div className="card-image">
                                     <figure className="image">
-                                        <a href={recipe.instructionsUrl} className="button ml-2">
+                                        <a href={recipe.instructionsUrl} className="button ml-2" target="_blank">
                                             <img src={recipe.image} alt={recipe.title} /> 
                                         </a>
                                     </figure>
@@ -63,18 +87,29 @@ const RecipeDisplay = () => {
                                         <h5 className="title is-5">Nutrition:</h5>
                                         <p>Calories: {`${recipe.caloriesPerServing.toFixed(2)} kcal`}</p>
                                         <p>Serving Size: {recipe.servingSize}</p>
-
                                         <p><strong>Diet Labels:</strong> {recipe.dietLabels.join(', ')}</p>
-
-
-
                                         <p className="mt-2 ml-4">Source: <a href={recipe.instructionsUrl} target="_blank" rel="noopener noreferrer" className="has-text-info"><em>{recipe.source}</em></a></p>
+                                    </div>
+                                    <div className="has-text-centered mt-3">
+                                    <button
+                                        onClick={() => handleAddToPrint(recipe.instructionsUrl)}
+                                        className={`button is-link ${selectedRecipes.has(recipe.instructionsUrl) ? 'is-danger' : ''}`}
+                                        >
+                                        {selectedRecipes.has(recipe.instructionsUrl) ? 'Remove from Print' : 'Add to Print'}
+                                    </button>
                                     </div>
                                 </div>
                             </div>
                     </div>
                 ))}
-            </div>
+                </div>
+                {selectedRecipes.size > 0 && (
+                    <div className="has-text-centered mt-4">
+                        <button onClick={handlePrintToPDF} className="button is-primary">
+                            Print to PDF
+                        </button>
+                </div>
+                )}
         </div>
     );
 };
