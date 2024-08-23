@@ -4,15 +4,15 @@ A full stack web application by John Fuentes, Hy Nguyen and Branden Chiem.
 
 A capstone project for the Diploma of IT at Coder Academy.
 
-## R10: Deployment Links
+## R10: Deployed Website
 
-### Frontend
+Frontend: https://diet-delight.netlify.app/  
+Backend: https://diet-delight-backend.onrender.com/
 
-https://diet-delight.netlify.app/
+## R11: Github Repository
 
-### Backend
-
-https://diet-delight-backend.onrender.com/
+Frontend: https://github.com/jmcaluyafuentes/diet-delight-frontend  
+Backend: https://github.com/jmcaluyafuentes/diet-delight-backend
 
 ## R1: Website Desciption
 
