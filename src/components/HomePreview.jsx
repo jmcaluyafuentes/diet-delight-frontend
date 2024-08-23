@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import './HomePreview.css'
 
 const dietOptions = ['balanced', 'high-fiber', 'high-protein', 'low-carb', 'low-fat', 'low-sodium'];
 const healthOptions = ['dairy-free', 'egg-free', 'gluten-free', 'low-potasium', 'low-sugar', 'Mediterranean', 'mustard-free', 'no-oil-added', 'soy-free', 'sugar-conscious', 'tree-nut-free', 'vegan', 'vegetarian', 'wheat-free'];
@@ -43,11 +44,11 @@ const RecipeDisplay = () => {
             </h2>
             <div className="columns is-multiline is-centered">
                 {recipes.map(recipe => (
-                    <div key={recipe.id} className="column is-one-quarter">
+                    <div key={recipe.instructionsUrl} className="column is-one-quarter">
                         <div className="recipe card">
                                 <div className="card-image">
                                     <figure className="image">
-                                        <a href={recipe.instructionsUrl} className="button is-primary ml-4">
+                                        <a href={recipe.instructionsUrl} className="button ml-2">
                                             <img src={recipe.image} alt={recipe.title} /> 
                                         </a>
                                     </figure>

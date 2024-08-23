@@ -1,0 +1,7 @@
+.recipe-display a.button {
+    border: none;
+}
+
+.recipe-display a.button:hover {
+    background-color: #00d1b2;
+}
