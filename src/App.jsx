@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Home from './pages/Home.jsx';
 import DietarySelection from './pages/DietarySelection';
 import PreviewRecipes from './pages/PreviewRecipes.jsx';
@@ -8,7 +8,6 @@ import NavBar from './components/NavBar.jsx';
 
 const App = () => {
     const [recipes, setRecipes] = useState([]);
-    const navigate = useNavigate();
 
     const fetchRecipes = async (dietCriteria, healthCriteria) => {
         try {

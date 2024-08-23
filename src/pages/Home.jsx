@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer.jsx';
 import HeroBanner from '../components/Herobanner';
@@ -11,7 +10,7 @@ const Home = () => {
             minHeight: '100vh'
         }}>
             <div className="hero-head">
-              <NavBar />
+                <NavBar />
             </div>
 
             <div className="hero-body" style={{
@@ -23,7 +22,7 @@ const Home = () => {
             <div className="featured-recipes" style={{ 
                 paddingLeft: '2vw', paddingRight: '2vw', paddingBottom: '5vh'
             }}>
-             <RecipeDisplay />
+                <RecipeDisplay />
             </div>
             <Footer />
         </section>
