@@ -1,0 +1,61 @@
+/* PrintPreview.css */
+.print-preview-container {
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 800px;
+    position: relative;
+    color: #000; /* Ensure default text color is dark */
+}
+    
+.print-preview-header {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+    
+.print-preview-header .button {
+    margin-left: 10px;
+}
+    
+.print-preview-content {
+    border: 1px solid #ddd;
+    padding: 20px;
+    background-color: #fff;
+}
+    
+.recipe-details {
+    margin-bottom: 40px;
+}
+    
+.recipe-info {
+    margin-top: 20px;
+}
+    
+.print-preview-title {
+    color: #000 !important;
+}
+    
+.print-preview-title.is-3 {
+    font-size: 2em;
+}
+    
+.print-preview-title.is-5 {
+    font-size: 1.25em;
+}
+    
+.diet-labels {
+    color: #000 !important;
+}
+    
+.health-labels {
+    color: #000 !important;
+}
+    
+.recipe-info > h5 {
+        margin-top: 20px;
+}
+    
+.recipe-info > p {
+        margin-top: 10px;
+}

@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import Home from './pages/Home.jsx';
 import DietarySelection from './pages/DietarySelection';
-import PreviewRecipes from './pages/PreviewRecipes';
+import PreviewRecipes from './pages/PreviewRecipes.jsx';
+import PrintRecipes from './pages/PrintPreview.jsx';
 import NavBar from './components/NavBar.jsx';
 
 const App = () => {
@@ -39,6 +40,7 @@ const App = () => {
                         <PreviewRecipes recipes={recipes} />
                     </main>
                 </>} />
+                <Route path="/print" element={<PrintRecipes />} />
             </Routes>
         </div>
     );
