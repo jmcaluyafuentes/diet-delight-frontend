@@ -68,7 +68,7 @@ const PreviewRecipes = ({ recipes }) => {
                         <div className="content">
                         <h5 className="title is-5">Nutrition:</h5>
                         <p>
-                            Calories: {`${recipe.caloriesPerServing.toFixed(2)} kcal`}
+                            Calories: {`${recipe.caloriesPerServing.toFixed(2)} kcal/serving`}
                         </p>
                         <p>Serving Size: {recipe.servingSize}</p>
 
