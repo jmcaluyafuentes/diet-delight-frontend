@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import './PrintPreview.css';
 
@@ -6,6 +6,11 @@ const PrintPreview = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { recipes } = location.state || { recipes: [] };
+
+  // Scroll to top when the component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const handlePrint = () => {
     fetch('/api/printRecipes', {
@@ -46,8 +51,8 @@ const PrintPreview = () => {
                 <p>Serving Size: {recipe.servingSize}</p>
 
                 <h5 className="print-preview-title is-5">Diet and Health Information:</h5>
-                <p className="diet-labels"><strong>Diet Labels:</strong> {recipe.dietLabels.join(', ')}</p>
-                <p className="health-labels"><strong>Health Labels:</strong> {recipe.healthLabels.join(', ')}</p>
+                <p className="diet-labels"><strong className="has-text-black">Diet Labels:</strong> {recipe.dietLabels.join(', ')}</p>
+                <p className="health-labels"><strong className="has-text-black">Health Labels:</strong> {recipe.healthLabels.join(', ')}</p>
 
                 <h5 className="print-preview-title is-5">Ingredients:</h5>
                 <ul>
