@@ -1,10 +1,9 @@
-/* PrintPreview.css */
 .print-preview-container {
     padding: 20px;
     margin: 0 auto;
     max-width: 800px;
     position: relative;
-    color: #000; /* Ensure default text color is dark */
+    color: #000;
 }
     
 .print-preview-header {
