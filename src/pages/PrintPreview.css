@@ -58,3 +58,7 @@
 .recipe-info > p {
         margin-top: 10px;
 }
+
+.spaced {
+    padding-left: 20px;
+}

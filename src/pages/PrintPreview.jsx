@@ -13,13 +13,13 @@ const PrintPreview = () => {
   }, []);
 
   const handlePrint = () => {
-    fetch('/api/printRecipes', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ recipes }),
+    fetch('http://localhost:4001/recipes/print', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ recipes }),
     })
-      .then((response) => response.blob())
-      .then((blob) => {
+    .then((response) => response.blob())
+    .then((blob) => {
         const url = window.URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
@@ -27,7 +27,8 @@ const PrintPreview = () => {
         document.body.appendChild(a);
         a.click();
         a.remove();
-      });
+    })
+    .catch((error) => console.error('Error generating PDF:', error));
   };
 
   const handleCancel = () => {
@@ -46,16 +47,16 @@ const PrintPreview = () => {
             <div key={recipe.instructionsUrl} className="recipe-details">
               <h1 className="print-preview-title is-3">{recipe.title}</h1>
               <div className="recipe-info">
-                <h5 className="print-preview-title is-5">Nutrition:</h5>
-                <p>Calories: {`${recipe.caloriesPerServing.toFixed(2)} kcal`}</p>
-                <p>Serving Size: {recipe.servingSize}</p>
+                <h5 className="print-preview-title is-5">Nutrition</h5>
+                <p className="spaced">Calories: {`${recipe.caloriesPerServing.toFixed(2)} kcal`}</p>
+                <p className="spaced">Serving Size: {recipe.servingSize}</p>
 
-                <h5 className="print-preview-title is-5">Diet and Health Information:</h5>
-                <p className="diet-labels"><strong className="has-text-black">Diet Labels:</strong> {recipe.dietLabels.join(', ')}</p>
-                <p className="health-labels"><strong className="has-text-black">Health Labels:</strong> {recipe.healthLabels.join(', ')}</p>
+                <h5 className="print-preview-title is-5">Diet and Health Information</h5>
+                <p className="diet-labels spaced"><strong className="has-text-black">Diet Labels:</strong> {recipe.dietLabels.join(', ')}</p>
+                <p className="health-labels spaced"><strong className="has-text-black">Health Labels:</strong> {recipe.healthLabels.join(', ')}</p>
 
-                <h5 className="print-preview-title is-5">Ingredients:</h5>
-                <ul>
+                <h5 className="print-preview-title is-5">Ingredients</h5>
+                <ul className="spaced">
                   {recipe.ingredients.map((ingredient, index) => (
                     <li key={index}>{ingredient}</li>
                   ))}
