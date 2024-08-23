@@ -20,7 +20,8 @@ const Home = () => {
                 <HeroBanner backgroundImage="https://upload.wikimedia.org/wikipedia/commons/1/10/Red_Color.jpg" />
             </div>
 
-            <div className="featured-recipes" style={{
+            <div className="featured-recipes" style={{ 
+                paddingLeft: '2vw', paddingRight: '2vw', paddingBottom: '5vh'
             }}>
              <RecipeDisplay />
             </div>
