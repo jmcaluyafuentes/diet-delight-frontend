@@ -13,7 +13,7 @@ const PrintPreview = () => {
   }, []);
 
   const handlePrint = () => {
-    fetch('http://localhost:4001/recipes/print', {
+    fetch('https://diet-delight-backend.onrender.com/recipes/print', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ recipes }),
