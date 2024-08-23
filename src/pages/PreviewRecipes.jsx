@@ -92,6 +92,7 @@ const PreviewRecipes = ({ recipes }) => {
                         <a
                             href={recipe.instructionsUrl}
                             className="button is-primary ml-4"
+                            target="_blank"
                         >
                             See instructions
                         </a>
