@@ -43,7 +43,7 @@ const RecipeDisplay = () => {
             </h2>
             <div className="columns is-multiline is-centered">
                 {recipes.map(recipe => (
-                    <div key={recipe.id} className="column is-one-quarter">
+                    <div key={recipe.instructionsUrl} className="column is-one-quarter">
                         <div className="recipe card">
                                 <div className="card-image">
                                     <figure className="image">
