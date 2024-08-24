@@ -5,11 +5,15 @@ import DietarySelection from './pages/DietarySelection';
 import PreviewRecipes from './pages/PreviewRecipes.jsx';
 import PrintRecipes from './pages/PrintPreview.jsx';
 import NavBar from './components/NavBar.jsx';
+import LoadingSpinner from './components/LoadingSpinner.jsx';
 
 const App = () => {
     const [recipes, setRecipes] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
 
     const fetchRecipes = async (dietCriteria, healthCriteria) => {
+        setIsLoading(true); // Start loading before fetching
+
         try {
             const queryParams = new URLSearchParams();
             dietCriteria.forEach(diet => queryParams.append('diet', diet));
@@ -21,9 +25,14 @@ const App = () => {
             }
             const data = await response.json();
             setRecipes(data);
+
+            // Simulate a delay
+            await new Promise(resolve => setTimeout(resolve, 3000)); // 3 seconds delay
         } catch (error) {
             console.error('Error fetching recipes:', error);
             setRecipes([]);
+        } finally {
+            setIsLoading(false); // End loading after a delay
         }
     };
 
@@ -36,7 +45,11 @@ const App = () => {
                     <main className="section">
                         <h1 className="title is-2 has-text-centered">Recipe Search</h1>
                         <DietarySelection onFetchRecipes={fetchRecipes} />
-                        <PreviewRecipes recipes={recipes} />
+                        {isLoading ? ( // Show spinner while loading
+                            <LoadingSpinner />
+                        ) : (
+                            <PreviewRecipes recipes={recipes} />
+                        )}
                     </main>
                 </>} />
                 <Route path="/print" element={<PrintRecipes />} />
