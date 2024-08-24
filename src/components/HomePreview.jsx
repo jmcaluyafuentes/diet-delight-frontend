@@ -8,17 +8,23 @@ const healthOptions = ['dairy-free', 'egg-free', 'gluten-free', 'low-potasium', 
 const getRandomElement = (array) => array[Math.floor(Math.random() * array.length)];
 
 const RecipeDisplay = () => {
-    const [recipes, setRecipes] = useState([]);
+    const [allRecipes, setAllRecipes] = useState([]); // Store all fetched recipes
+    const [displayedRecipes, setDisplayedRecipes] = useState([]); // Recipes to display
     const [selectedRecipes, setSelectedRecipes] = useState(new Set());
     const [randomDiet, setRandomDiet] = useState('');
     const navigate = useNavigate();
-    
+
+    // Function to shuffle an array
+    const shuffleArray = (array) => array.sort(() => Math.random() - 0.5);
+
+    // Fetch recipes once when the component mounts
     useEffect(() => {
         const fetchRecipes = async () => {
             const selectedDiet = getRandomElement(dietOptions);
             const randomHealth = getRandomElement(healthOptions);
 
-            setRandomDiet(selectedDiet); // Store the selected diet for display
+            // Store the selected diet for display
+            setRandomDiet(selectedDiet);
 
             try {
                 const queryParams = new URLSearchParams();
@@ -30,15 +36,33 @@ const RecipeDisplay = () => {
                     throw new Error('Network response was not ok');
                 }
                 const data = await response.json();
-                setRecipes(data.slice(0, 4)); // Get only 4 recipes
+                // Store all recipes fetched
+                setAllRecipes(data);
+                // Display the initial 4 recipes
+                setDisplayedRecipes(data.slice(0, 4));
             } catch (error) {
                 console.error('Error fetching recipes:', error);
-                setRecipes([]);
+                setAllRecipes([]);
+                setDisplayedRecipes([]);
             }
         };
 
         fetchRecipes();
     }, []);
+
+    // Set up interval to randomize displayed recipes every 10 seconds
+    useEffect(() => {
+        const intervalId = setInterval(() => {
+            if (allRecipes.length > 0) {
+                // Shuffle a copy of the allRecipes array
+                const shuffled = shuffleArray([...allRecipes]);
+                // Update displayed recipes
+                setDisplayedRecipes(shuffled.slice(0, 4)); 
+            }
+        }, 10000);
+
+        return () => clearInterval(intervalId); // Clean up interval on unmount
+    }, [allRecipes]);
 
     // Handle adding or removing recipes for printing
     const handleAddToPrint = (recipeIdentifier) => {
@@ -55,7 +79,7 @@ const RecipeDisplay = () => {
 
     // Navigate to PrintPreview with the selected recipes
     const handlePrintToPDF = () => {
-        const selectedRecipeDetails = recipes.filter((recipe) =>
+        const selectedRecipeDetails = displayedRecipes.filter((recipe) =>
             selectedRecipes.has(recipe.instructionsUrl)
         );
         navigate('/print', { state: { recipes: selectedRecipeDetails } });
@@ -67,49 +91,49 @@ const RecipeDisplay = () => {
                 Featured Recipes for a {randomDiet} Diet
             </h2>
             <div className="columns is-multiline is-centered">
-                {recipes.map(recipe => (
+                {displayedRecipes.map(recipe => (
                     <div key={recipe.instructionsUrl} className="column is-one-quarter">
                         <div className="recipe card">
-                                <div className="card-image">
-                                    <figure className="image">
-                                        <a href={recipe.instructionsUrl} className="button ml-2" target="_blank">
-                                            <img src={recipe.image} alt={recipe.title} /> 
-                                        </a>
-                                    </figure>
+                            <div className="card-image">
+                                <figure className="image">
+                                    <a href={recipe.instructionsUrl} className="button ml-2" target="_blank" rel="noopener noreferrer">
+                                        <img src={recipe.image} alt={recipe.title} /> 
+                                    </a>
+                                </figure>
+                            </div>
+                            <div className="card-content">
+                                <div className="media">
+                                    <div className="media-content">
+                                        <p className="title is-4">{recipe.title}</p>
+                                    </div>
                                 </div>
-                                <div className="card-content">
-                                    <div className="media">
-                                        <div className="media-content">
-                                            <p className="title is-4">{recipe.title}</p>
-                                        </div>
-                                    </div>
-                                    <div className="content">
-                                        <h5 className="title is-5">Nutrition:</h5>
-                                        <p>Calories: {`${recipe.caloriesPerServing.toFixed(2)} kcal`}</p>
-                                        <p>Serving Size: {recipe.servingSize}</p>
-                                        <p><strong>Diet Labels:</strong> {recipe.dietLabels.join(', ')}</p>
-                                        <p className="mt-2 ml-4">Source: <a href={recipe.instructionsUrl} target="_blank" rel="noopener noreferrer" className="has-text-info"><em>{recipe.source}</em></a></p>
-                                    </div>
-                                    <div className="has-text-centered mt-3">
+                                <div className="content">
+                                    <h5 className="title is-5">Nutrition:</h5>
+                                    <p>Calories: {`${recipe.caloriesPerServing.toFixed(2)} kcal`}</p>
+                                    <p>Serving Size: {recipe.servingSize}</p>
+                                    <p><strong>Diet Labels:</strong> {recipe.dietLabels.join(', ')}</p>
+                                    <p className="mt-2 ml-4">Source: <a href={recipe.instructionsUrl} target="_blank" rel="noopener noreferrer" className="has-text-info"><em>{recipe.source}</em></a></p>
+                                </div>
+                                <div className="has-text-centered mt-3">
                                     <button
                                         onClick={() => handleAddToPrint(recipe.instructionsUrl)}
                                         className={`button is-link ${selectedRecipes.has(recipe.instructionsUrl) ? 'is-danger' : ''}`}
-                                        >
+                                    >
                                         {selectedRecipes.has(recipe.instructionsUrl) ? 'Remove from Print' : 'Add to Print'}
                                     </button>
-                                    </div>
                                 </div>
                             </div>
+                        </div>
                     </div>
                 ))}
+            </div>
+            {selectedRecipes.size > 0 && (
+                <div className="has-text-centered mt-4">
+                    <button onClick={handlePrintToPDF} className="button is-primary">
+                        Print to PDF
+                    </button>
                 </div>
-                {selectedRecipes.size > 0 && (
-                    <div className="has-text-centered mt-4">
-                        <button onClick={handlePrintToPDF} className="button is-primary">
-                            Print to PDF
-                        </button>
-                </div>
-                )}
+            )}
         </div>
     );
 };
