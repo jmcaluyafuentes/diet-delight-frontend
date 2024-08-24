@@ -97,7 +97,7 @@ const PreviewRecipes = ({ recipes }) => {
                         <h5 className="title is-5">Preparation:</h5>
                         <a
                             href={recipe.instructionsUrl}
-                            className="button is-primary ml-4"
+                            className="tag is-info ml-4"
                             target="_blank"
                         >
                             See instructions
