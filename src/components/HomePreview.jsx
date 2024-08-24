@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import LoadingSpinner from './LoadingSpinner'; // Import the new LoadingSpinner component
 import './HomePreview.css';
 
 const dietOptions = ['balanced', 'high-fiber', 'high-protein', 'low-carb', 'low-fat', 'low-sodium'];
@@ -43,10 +44,9 @@ const RecipeDisplay = () => {
                 setAllRecipes([]);
                 setDisplayedRecipes([]);
             } finally {
-            // Simulate loading delay
-            setTimeout(() => {
-                setIsLoading(false); // End loading after a delay
-            }, 5000); // 3000 milliseconds = 3 seconds
+                setTimeout(() => {
+                    setIsLoading(false); // End loading after a delay
+                }, 3000);
             }
         };
 
@@ -85,8 +85,8 @@ const RecipeDisplay = () => {
 
     return (
         <div className="recipe-display">
-            {isLoading ? ( // Display spinner when loading
-                <div className="loading-spinner"></div>
+            {isLoading ? (
+                <LoadingSpinner />
             ) : (
                 <>
                     <h2 className="title is-4 has-text-centered mt-5">
