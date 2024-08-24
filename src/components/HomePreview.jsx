@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import LoadingSpinner from './LoadingSpinner'; // Import the new LoadingSpinner component
+import LoadingSpinner from './LoadingSpinner';
 import './HomePreview.css';
 
 const dietOptions = ['balanced', 'high-fiber', 'high-protein', 'low-carb', 'low-fat', 'low-sodium'];
@@ -14,6 +14,7 @@ const RecipeDisplay = () => {
     const [selectedRecipes, setSelectedRecipes] = useState(new Set());
     const [randomDiet, setRandomDiet] = useState('');
     const [isLoading, setIsLoading] = useState(true);
+    const [isShuffling, setIsShuffling] = useState(true);
     const navigate = useNavigate();
 
     const shuffleArray = (array) => array.sort(() => Math.random() - 0.5);
@@ -54,15 +55,18 @@ const RecipeDisplay = () => {
     }, []);
 
     useEffect(() => {
-        const intervalId = setInterval(() => {
-            if (allRecipes.length > 0) {
-                const shuffled = shuffleArray([...allRecipes]);
-                setDisplayedRecipes(shuffled.slice(0, 4));
-            }
-        }, 10000);
+        let intervalId;
+        if (isShuffling) {
+            intervalId = setInterval(() => {
+                if (allRecipes.length > 0) {
+                    const shuffled = shuffleArray([...allRecipes]);
+                    setDisplayedRecipes(shuffled.slice(0, 4));
+                }
+            }, 10000);
+        }
 
         return () => clearInterval(intervalId);
-    }, [allRecipes]);
+    }, [allRecipes, isShuffling]);
 
     const handleAddToPrint = (recipeIdentifier) => {
         setSelectedRecipes((prevSelected) => {
@@ -72,6 +76,9 @@ const RecipeDisplay = () => {
             } else {
                 updatedSelections.add(recipeIdentifier);
             }
+
+            // Toggle shuffling based on the number of selected recipes
+            setIsShuffling(updatedSelections.size === 0);
             return updatedSelections;
         });
     };
