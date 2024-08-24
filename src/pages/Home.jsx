@@ -7,7 +7,7 @@ import RecipeDisplay from '../components/HomePreview';
 const Home = () => {
     return (
         <section className="hero is-fullheight" style={{
-            minHeight: '100vh'
+            minHeight: '80vh'
         }}>
             <div className="hero-head">
                 <NavBar />
