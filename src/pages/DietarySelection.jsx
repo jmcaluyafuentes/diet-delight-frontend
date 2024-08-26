@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import CheckboxGroup from '../components/CheckboxGroup.jsx';
 import LoadingSpinner from '../components/LoadingSpinner.jsx';
-import PreviewRecipes from './ShowRecipes.jsx'; // Adjust the import if necessary
-import { fetchRecipes } from '../utils/fetchRecipes.js'; // Adjust the import if necessary
+import PreviewRecipes from './ShowRecipes.jsx';
+import { fetchRecipes } from '../utils/fetchRecipes.js';
+import { dietOptions, healthOptions } from '../utils/dietHealthOptions.js';
 
-const DietarySelection = ({ onFetchRecipes }) => {
+const DietarySelection = () => {
     const [dietCriteria, setDietCriteria] = useState([]);
     const [healthCriteria, setHealthCriteria] = useState([]);
     const [errorMessage, setErrorMessage] = useState('');
@@ -34,13 +35,10 @@ const DietarySelection = ({ onFetchRecipes }) => {
         fetchRecipes(dietCriteria, healthCriteria, setIsLoading, setRecipes);
     };
 
-    const dietOptions = ['balanced', 'high-fiber', 'high-protein', 'low-carb', 'low-fat', 'low-sodium'];
-    const healthOptions = ['dairy-free', 'egg-free', 'gluten-free', 'low-potasium', 'low-sugar', 'Mediterranean', 'mustard-free', 'no-oil-added', 'soy-free', 'sugar-conscious', 'tree-nut-free', 'vegan', 'vegetarian', 'wheat-free'];
-
     return (
         <main className="section">
             <h1 className="title is-2 has-text-centered">Recipe Search</h1>
-            <h1 className="title is-3 mt-6">Select Your Dietary and Health Criteria</h1>
+            <h2 className="title is-3 mt-6">Select Your Dietary and Health Criteria</h2>
 
             {/* Display error message if exists */}
             {errorMessage && (
