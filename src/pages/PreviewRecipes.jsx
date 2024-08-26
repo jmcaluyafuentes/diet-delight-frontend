@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Footer from '../components/Footer.jsx';
 
 const PreviewRecipes = ({ recipes }) => {
     const [selectedRecipes, setSelectedRecipes] = useState(new Set());
@@ -8,8 +7,8 @@ const PreviewRecipes = ({ recipes }) => {
 
     const handleAddToPrint = (recipeIdentifier) => {
         if (recipeIdentifier == null) {
-        console.error("Recipe identifier is undefined or null");
-        return;
+            console.error("Recipe identifier is undefined or null");
+            return;
         }
 
         setSelectedRecipes((prevSelected) => {
@@ -37,7 +36,6 @@ const PreviewRecipes = ({ recipes }) => {
             <p className="has-text-centered">No recipes found.</p>
             </div>
             <div className="mt-6 pt-6">
-            <Footer />
             </div>
         </>
         );
@@ -56,63 +54,57 @@ const PreviewRecipes = ({ recipes }) => {
                     <div className="recipe card">
                     <div className="card-image">
                         <figure className="image">
-                        <img src={recipe.image} alt={recipe.title} />
+                            <img src={recipe.image} alt={recipe.title} />
                         </figure>
                     </div>
                     <div className="card-content">
                         <div className="media">
-                        <div className="media-content">
-                            <p className="title is-4">{recipe.title}</p>
-                        </div>
+                            <div className="media-content">
+                                <p className="title is-4">{recipe.title}</p>
+                            </div>
                         </div>
                         <div className="content">
-                        <h5 className="title is-5">Nutrition:</h5>
-                        <p>
-                            Calories: {`${recipe.caloriesPerServing.toFixed(2)} kcal/serving`}
-                        </p>
-                        <p>Serving Size: {recipe.servingSize}</p>
+                            <h5 className="title is-5">Nutrition:</h5>
+                            <p>Calories: {`${recipe.caloriesPerServing.toFixed(2)} kcal/serving`}</p>
+                            <p>Serving Size: {recipe.servingSize}</p>
 
-                        <h5 className="title is-5">Diet and Health Information:</h5>
-                        <p>
-                            <strong>Diet Labels:</strong> {recipe.dietLabels.join(', ')}
-                        </p>
-                        <p>
-                            <strong>Health Labels:</strong>{' '}
-                            {recipe.healthLabels.join(', ')}
-                        </p>
+                            <h5 className="title is-5">Diet and Health Information:</h5>
+                            <p><strong>Diet Labels: </strong> {recipe.dietLabels.join(', ')}</p>
+                            <p><strong>Health Labels: </strong>{recipe.healthLabels.join(', ')}</p>
 
-                        <h5 className="title is-5">Dish Classification:</h5>
-                        <p> Dish Type: {recipe.dishType.map(dish => dish.charAt(0).toUpperCase() + dish.slice(1)).join(', ')}<br />
-                            Meal Type: {recipe.mealType.map(meal => meal.charAt(0).toUpperCase() + meal.slice(1)).join(", ")}<br />
-                            Cuisine: {recipe.cuisineType.map(cuisine => cuisine.charAt(0).toUpperCase() + cuisine.slice(1)).join(', ')}<br />
-                        </p>
+                            <h5 className="title is-5">Dish Classification:</h5>
+                            <p> 
+                                Dish Type: {recipe.dishType.map(dish => dish.charAt(0).toUpperCase() + dish.slice(1)).join(', ')}<br />
+                                Meal Type: {recipe.mealType.map(meal => meal.charAt(0).toUpperCase() + meal.slice(1)).join(", ")}<br />
+                                Cuisine: {recipe.cuisineType.map(cuisine => cuisine.charAt(0).toUpperCase() + cuisine.slice(1)).join(', ')}<br />
+                            </p>
 
-                        <h5 className="title is-5">Ingredients:</h5>
-                        <ul>
-                            {recipe.ingredients.map((ingredient, index) => (
-                            <li key={index}>{ingredient}</li>
-                            ))}
-                        </ul>
+                            <h5 className="title is-5">Ingredients:</h5>
+                            <ul>
+                                {recipe.ingredients.map((ingredient, index) => (
+                                    <li key={index}>{ingredient}</li>
+                                ))}
+                            </ul>
 
-                        <h5 className="title is-5">Preparation:</h5>
-                        <a
-                            href={recipe.instructionsUrl}
-                            className="tag is-info ml-4"
-                            target="_blank"
-                        >
-                            See instructions
-                        </a>
-                        <p className="mt-2 ml-4">
-                            Source:{' '}
+                            <h5 className="title is-5">Preparation:</h5>
                             <a
-                            href={recipe.instructionsUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="has-text-info"
+                                href={recipe.instructionsUrl}
+                                className="tag is-info ml-4"
+                                target="_blank"
                             >
-                            <em>{recipe.source}</em>
+                                See instructions
                             </a>
-                        </p>
+                            <p className="mt-2 ml-4">
+                                Source:{' '}
+                                <a
+                                    href={recipe.instructionsUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="has-text-info"
+                                >
+                                <em>{recipe.source}</em>
+                                </a>
+                            </p>
                         </div>
                         <div className="has-text-centered mt-3">
                         <button
@@ -142,10 +134,6 @@ const PreviewRecipes = ({ recipes }) => {
                 Print to PDF
             </button>
             </div>
-        </div>
-
-        <div className="mt-6 pt-6">
-            <Footer />
         </div>
         </>
     );
