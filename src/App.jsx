@@ -14,10 +14,11 @@ const App = () => {
 
     return (
         <div>
+            <NavBar />
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/search" element={<>
-                    <NavBar />
+                    
                     <main className="section">
                         <h1 className="title is-2 has-text-centered">Recipe Search</h1>
                         <DietarySelection onFetchRecipes={(dietCriteria, healthCriteria) => 
