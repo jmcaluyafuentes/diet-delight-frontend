@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Home from './pages/Home.jsx';
 import DietarySelection from './pages/DietarySelection';
-import PreviewRecipes from './pages/PreviewRecipes.jsx';
+import PreviewRecipes from './pages/ShowRecipes.jsx';
 import PrintRecipes from './pages/PrintPreview.jsx';
 import NavBar from './components/NavBar.jsx';
 import Footer from './components/Footer.jsx';
