@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import LoadingSpinner from './LoadingSpinner';
-import './HomePreview.css';
+import './FeaturedRecipes.css';
 
 const dietOptions = ['balanced', 'high-fiber', 'high-protein', 'low-carb', 'low-fat', 'low-sodium'];
 const healthOptions = ['dairy-free', 'egg-free', 'gluten-free', 'low-potasium', 'low-sugar', 'Mediterranean', 'mustard-free', 'no-oil-added', 'soy-free', 'sugar-conscious', 'tree-nut-free', 'vegan', 'vegetarian', 'wheat-free'];
 
 const getRandomElement = (array) => array[Math.floor(Math.random() * array.length)];
 
-const RecipeDisplay = () => {
+const FeaturedRecipes = () => {
     const [allRecipes, setAllRecipes] = useState([]);
     const [displayedRecipes, setDisplayedRecipes] = useState([]);
     const [selectedRecipes, setSelectedRecipes] = useState(new Set());
@@ -149,4 +149,4 @@ const RecipeDisplay = () => {
     );
 };
 
-export default RecipeDisplay;
+export default FeaturedRecipes;

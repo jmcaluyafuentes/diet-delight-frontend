@@ -1,6 +1,6 @@
 import React from 'react';
 import HeroBanner from '../components/Herobanner';
-import RecipeDisplay from '../components/HomePreview';
+import RecipeDisplay from '../components/FeaturedRecipes';
 
 const Home = () => {
     return (
