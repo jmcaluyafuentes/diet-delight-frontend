@@ -1,5 +1,4 @@
 import React from 'react';
-import Footer from '../components/Footer.jsx';
 import HeroBanner from '../components/Herobanner';
 import RecipeDisplay from '../components/HomePreview';
 
@@ -13,7 +12,6 @@ const Home = () => {
             <div className="featured-recipes" style={{paddingLeft: '2vw', paddingRight: '2vw', paddingBottom: '5vh'}}>
                 <RecipeDisplay />
             </div>
-            <Footer />
         </section>
     );
 };

@@ -5,6 +5,7 @@ import DietarySelection from './pages/DietarySelection';
 import PreviewRecipes from './pages/PreviewRecipes.jsx';
 import PrintRecipes from './pages/PrintPreview.jsx';
 import NavBar from './components/NavBar.jsx';
+import Footer from './components/Footer.jsx';
 import LoadingSpinner from './components/LoadingSpinner.jsx';
 import { fetchRecipes } from './utils/fetchRecipes.js';
 
@@ -33,6 +34,7 @@ const App = () => {
                 </>} />
                 <Route path="/print" element={<PrintRecipes />} />
             </Routes>
+            <Footer />
         </div>
     );
 };
