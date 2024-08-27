@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import PreviewRecipes from './PreviewRecipes';
+import ShowRecipes from './ShowRecipes';
 
 const sampleRecipes = [
     {
@@ -30,9 +30,9 @@ const sampleRecipes = [
     }
 ];
 
-describe('PreviewRecipes Component', () => {
+describe('ShowRecipes Component', () => {
     test('renders a list of recipes', () => {
-        render(<PreviewRecipes recipes={sampleRecipes} />);
+        render(<ShowRecipes recipes={sampleRecipes} />);
         
         // Check if each recipe title is rendered
         sampleRecipes.forEach(recipe => {
@@ -48,12 +48,12 @@ describe('PreviewRecipes Component', () => {
     });
 
     test('displays a message when no recipes are provided', () => {
-        render(<PreviewRecipes recipes={[]} />);
+        render(<ShowRecipes recipes={[]} />);
         expect(screen.getByText('No recipes found.')).toBeInTheDocument();
     });
 
     test('renders recipe images with correct src and alt attributes', () => {
-        render(<PreviewRecipes recipes={sampleRecipes} />);
+        render(<ShowRecipes recipes={sampleRecipes} />);
     
         sampleRecipes.forEach(recipe => {
             const img = screen.getByAltText(recipe.title);
@@ -62,7 +62,7 @@ describe('PreviewRecipes Component', () => {
     });
 
     test('displays nutritional information correctly', () => {
-        render(<PreviewRecipes recipes={sampleRecipes} />);
+        render(<ShowRecipes recipes={sampleRecipes} />);
     
         sampleRecipes.forEach(recipe => {
             expect(screen.getByText(`Calories: ${recipe.caloriesPerServing.toFixed(2)} kcal`)).toBeInTheDocument();
@@ -71,7 +71,7 @@ describe('PreviewRecipes Component', () => {
     });
     
     test('renders the ingredients list for each recipe', () => {
-        render(<PreviewRecipes recipes={sampleRecipes} />);
+        render(<ShowRecipes recipes={sampleRecipes} />);
     
         sampleRecipes.forEach(recipe => {
             recipe.ingredients.forEach(ingredient => {
@@ -81,7 +81,7 @@ describe('PreviewRecipes Component', () => {
     });
     
     test('displays "No recipes found" when recipes array is empty', () => {
-        render(<PreviewRecipes recipes={[]} />);
+        render(<ShowRecipes recipes={[]} />);
         expect(screen.getByText('No recipes found.')).toBeInTheDocument();
     });
     

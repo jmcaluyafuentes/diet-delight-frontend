@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const PreviewRecipes = ({ recipes }) => {
+const ShowRecipes = ({ recipes }) => {
     const [selectedRecipes, setSelectedRecipes] = useState(new Set());
     const navigate = useNavigate();
 
@@ -33,7 +33,7 @@ const PreviewRecipes = ({ recipes }) => {
         return (
         <>
             <div className="container">
-            <p className="has-text-centered">No recipes found.</p>
+            <p className="has-text-centered">Sorry, there are no recipes found. Please try other criteria.</p>
             </div>
             <div className="mt-6 pt-6">
             </div>
@@ -139,4 +139,4 @@ const PreviewRecipes = ({ recipes }) => {
     );
 };
 
-export default PreviewRecipes;
+export default ShowRecipes;

@@ -36,8 +36,8 @@ const FeaturedRecipes = () => {
                     throw new Error('Network response was not ok');
                 }
                 const data = await response.json();
-                setAllRecipes(data);
-                setDisplayedRecipes(data.slice(0, 4));
+                setAllRecipes(data.recipes);
+                setDisplayedRecipes(data.recipes.slice(0, 4));
             } catch (error) {
                 console.error('Error fetching recipes:', error);
                 setAllRecipes([]);

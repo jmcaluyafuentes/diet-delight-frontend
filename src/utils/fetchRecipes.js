@@ -21,7 +21,7 @@ export const fetchRecipes = async (dietCriteria, healthCriteria, setIsLoading, s
 
         const data = await response.json();
         // Update the state with the fetched recipes
-        setRecipes(data);
+        setRecipes(data.recipes);
 
         // Simulate a delay (for development or demonstration purposes)
         await new Promise(resolve => setTimeout(resolve, 3000)); // 3 seconds delay
