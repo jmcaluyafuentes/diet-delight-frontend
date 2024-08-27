@@ -20,3 +20,11 @@ figure a img {
     max-height: 30vh; 
     object-fit: cover
 }
+
+#btn-print-to-pdf:hover {
+    background-color: aqua;
+}
+
+#btn-add-to-print:hover {
+    background-color: #1dbeda;
+}

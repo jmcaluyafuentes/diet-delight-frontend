@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './Herobanner.css'
 
 function HeroBanner({ backgroundImage }) {
   const heroBannerStyle = {
@@ -26,7 +27,7 @@ function HeroBanner({ backgroundImage }) {
       >
         <h1 className="title is-1">Welcome to Diet Delight</h1>
         <h2 className="subtitle is-4 mt-4 has-text-white-bis">Your go-to app for healthy recipes</h2>
-        <Link to="/search" className="button is-warning is-large mt-5">
+        <Link to="/search" className="button is-warning is-large mt-5" id="cta-search-recipes">
           Search Recipes
         </Link>
       </div>

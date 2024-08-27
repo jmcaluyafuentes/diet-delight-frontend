@@ -62,3 +62,12 @@
 .spaced {
     padding-left: 20px;
 }
+
+#btn-download:hover {
+    background-color: aqua;
+}
+
+#btn-cancel:hover {
+    background-color: rgb(255, 118, 161);
+}
+

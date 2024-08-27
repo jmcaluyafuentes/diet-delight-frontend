@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './ShowRecipes.css'
 
 const ShowRecipes = ({ recipes }) => {
     const [selectedRecipes, setSelectedRecipes] = useState(new Set());
@@ -33,9 +34,9 @@ const ShowRecipes = ({ recipes }) => {
         return (
         <>
             <div className="container">
-            <p className="has-text-centered">Sorry, there are no recipes found. Please try other criteria.</p>
+                <p className="has-text-centered">Sorry, there are no recipes found. Please try other criteria.</p>
             </div>
-            <div className="mt-6 pt-6">
+                <div className="mt-6 pt-6">
             </div>
         </>
         );
@@ -91,6 +92,7 @@ const ShowRecipes = ({ recipes }) => {
                                 href={recipe.instructionsUrl}
                                 className="tag is-info ml-4"
                                 target="_blank"
+                                id="see-instructions"
                             >
                                 See instructions
                             </a>
@@ -112,9 +114,10 @@ const ShowRecipes = ({ recipes }) => {
                             className={`button is-link ${
                             selectedRecipes.has(recipe.instructionsUrl) ? 'is-danger' : ''
                             }`}
+                            id="btn-add-to-print"
                         >
                             {selectedRecipes.has(recipe.instructionsUrl)
-                            ? 'Remove from Print'
+                            ? 'Remove'
                             : 'Add to Print'}
                         </button>
                         </div>
@@ -130,6 +133,7 @@ const ShowRecipes = ({ recipes }) => {
                 onClick={handlePrintToPDF}
                 className="button is-primary"
                 disabled={selectedRecipes.size === 0}
+                id="btn-print-to-pdf"
             >
                 Print to PDF
             </button>
