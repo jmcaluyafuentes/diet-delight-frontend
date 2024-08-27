@@ -24,7 +24,7 @@ export const fetchRecipes = async (dietCriteria, healthCriteria, setIsLoading, s
         setRecipes(data.recipes);
 
         // Simulate a delay (for development or demonstration purposes)
-        await new Promise(resolve => setTimeout(resolve, 3000)); // 3 seconds delay
+        await new Promise(resolve => setTimeout(resolve, 800));
     } catch (error) {
         console.error('Error fetching recipes:', error);
         // Update the state with an empty array in case of an error
