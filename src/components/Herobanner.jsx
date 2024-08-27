@@ -7,7 +7,7 @@ function HeroBanner({ backgroundImage }) {
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     width: '100%',
-    minHeight: '30vh',
+    minHeight: '100vh',
     textAlign: 'center',
     position: 'relative',
     display: 'flex',
