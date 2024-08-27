@@ -101,11 +101,11 @@ const FeaturedRecipes = () => {
                     <div className="columns is-multiline is-centered">
                         {displayedRecipes.map(recipe => (
                             <div key={recipe.instructionsUrl} className="column is-one-quarter">
-                                <div className="recipe card" style={{minHeight: '55vh'}}>
+                                <div className="recipe card">
                                     <div className="card-image is-flex is-justify-content-center is-align-items-center">
                                         <figure className="image">
                                             <a href={recipe.instructionsUrl} className="button ml-2" target="_blank" rel="noopener noreferrer">
-                                                <img src={recipe.image} alt={recipe.title} />
+                                                <img src={recipe.image} alt={recipe.title}/>
                                             </a>
                                         </figure>
                                     </div>

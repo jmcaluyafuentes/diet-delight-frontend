@@ -5,3 +5,18 @@
 .recipe-display a.button:hover {
     background-color: #00d1b2;
 }
+
+figure {
+    width: 95%
+}
+
+figure a {
+    display: block;
+    width: 100%
+}
+
+figure a img {
+    width: 100%; 
+    max-height: 30vh; 
+    object-fit: cover
+}
