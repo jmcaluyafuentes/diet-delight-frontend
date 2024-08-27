@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import './NavBar.css';
 
 const NavBar = () => {
+    const location = useLocation();
+
     useEffect(() => {
         // Function to toggle menu visibility
         const toggleMenu = (event) => {
@@ -30,16 +32,22 @@ const NavBar = () => {
         navbarBurgers.forEach(el => el.addEventListener('click', toggleMenu));
 
         // Add click event listeners to each navbar item to close the menu
-        const navbarItems = Array.from(document.querySelectorAll('.navbar-item'));
+        const navbarItems = Array.from(document.querySelectorAll('.navbar-item '));
         navbarItems.forEach(el => el.addEventListener('click', closeMenu));
 
-    }, []); // Empty dependency array ensures this runs only once on mount
+    }, []);
 
     return (
         <nav className="navbar has-background-primary" role="navigation" aria-label="main navigation">
-            <div className="navbar-brand">
-                <Link to="/" className="navbar-item">
+            <div className="navbar-brand" id="navbar-main">
+                {/* <Link to="/" className="navbar-item" >
                     <h1 className="title is-4 has-text-black ml-5 mr-5">Diet Delight</h1>
+                </Link> */}
+                <Link 
+                    to="/" 
+                    className={`navbar-main ${location.pathname === '/' ? 'active' : ''} has-text-black is-flex is-align-items-center`}
+                >
+                <h1 className="title is-4 has-text-black ml-5 mr-5 has-text-centered">Diet Delight</h1>
                 </Link>
                 <Link 
                     role="button" 
@@ -57,16 +65,28 @@ const NavBar = () => {
 
             <div id="navbarMenu" className="navbar-menu">
                 <div className="navbar-end mr-6">
-                    <Link to="/" className="navbar-item has-text-black">
+                    <Link 
+                        to="/" 
+                        className={`navbar-item ${location.pathname === '/' ? 'active' : ''} has-text-black`}
+                    >
                         Home
                     </Link>
-                    <Link to="/search" className="navbar-item has-text-black">
+                    <Link 
+                        to="/search" 
+                        className={`navbar-item ${location.pathname === '/search' ? 'active' : ''} has-text-black`}
+                    >
                         Search Recipe
                     </Link>
-                    <Link to="/about" className="navbar-item has-text-black">
+                    <Link 
+                        to="/about" 
+                        className={`navbar-item ${location.pathname === '/about' ? 'active' : ''} has-text-black`}
+                    >
                         About
                     </Link>
-                    <Link to="/contact" className="navbar-item has-text-black">
+                    <Link 
+                        to="/contact" 
+                        className={`navbar-item ${location.pathname === '/contact' ? 'active' : ''} has-text-black`}
+                    >
                         Contact
                     </Link>
                 </div>

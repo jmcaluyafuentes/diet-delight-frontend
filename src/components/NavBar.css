@@ -13,7 +13,7 @@
 }
 
 .navbar-burger:hover {
-    background-color: #65edd8;    
+    background-color: white;    
 }
 
 .navbar-item {
@@ -21,6 +21,14 @@
 }
 
 .navbar-item:hover {
-    color: #ffcc00;
-    background-color: #2bffdf;
+    background-color: white;
+}
+
+.navbar-item.active {
+    background-color: #f5a623; 
+    color: #fff; 
+}
+
+.navbar-item {
+    margin: 0 3rem; /* Adjust as needed */
 }
