@@ -25,8 +25,8 @@ function HeroBanner({ backgroundImage }) {
         style={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}
       >
         <h1 className="title is-1">Welcome to Diet Delight</h1>
-        <h2 className="subtitle is-4 mt-4">Your go-to app for healthy recipes</h2>
-        <Link to="/search" className="button is-primary is-large mt-5">
+        <h2 className="subtitle is-4 mt-4 has-text-white-bis">Your go-to app for healthy recipes</h2>
+        <Link to="/search" className="button is-warning is-large mt-5">
           Search Recipes
         </Link>
       </div>
