@@ -1,25 +1,25 @@
 export const dietOptions = [
-    'balanced', 
-    'high-fiber', 
-    'high-protein', 
-    'low-carb', 
-    'low-fat', 
-    'low-sodium'
+    'Balanced', 
+    'High-Fiber', 
+    'High-Protein', 
+    'Low-Carb', 
+    'Low-Fat', 
+    'Low-Sodium'
 ];
 
 export const healthOptions = [
-    'dairy-free', 
-    'egg-free', 
-    'gluten-free', 
-    'low-potassium',
-    'low-sugar', 
+    'Dairy-Free', 
+    'Egg-Free', 
+    'Gluten-Free', 
+    'Low-Potassium',
+    'Low-Sugar', 
     'Mediterranean', 
-    'mustard-free', 
-    'no-oil-added', 
-    'soy-free', 
-    'sugar-conscious', 
-    'tree-nut-free', 
-    'vegan', 
-    'vegetarian', 
-    'wheat-free'
+    'Mustard-Free', 
+    'No-Oil-Added', 
+    'Soy-Free', 
+    'Sugar-Conscious', 
+    'Tree-Nut-Free', 
+    'Vegan', 
+    'Vegetarian', 
+    'Wheat-Free'
 ];
