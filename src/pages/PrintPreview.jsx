@@ -55,7 +55,7 @@ const PrintPreview = () => {
                 <p className="diet-labels spaced"><strong className="has-text-black">Diet Labels:</strong> {recipe.dietLabels.join(', ')}</p>
                 <p className="health-labels spaced"><strong className="has-text-black">Health Labels:</strong> {recipe.healthLabels.join(', ')}</p>
 
-                <h5 className="print-preview-title is-5">Ingredients</h5>
+                <h5 className="print-preview-title is-5 ">Ingredients</h5>
                 <ul className="spaced">
                   {recipe.ingredients.map((ingredient, index) => (
                     <li key={index}>{ingredient}</li>

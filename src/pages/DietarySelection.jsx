@@ -38,8 +38,10 @@ const DietarySelection = () => {
 
     return (
         <main className="section">
-            <h1 className="title is-2 has-text-centered">Recipe Search</h1>
-            <h2 className="title is-3 mt-6">Select Your Dietary and Health Criteria</h2>
+            <div className="box">
+                <h1 className="title is-2 has-text-centered">Recipe Search</h1>
+                <h2 className="title is-3 mt-6 is-flex is-justify-content-center">Select Your Dietary and Health Criteria</h2>
+
 
             {/* Display error message if exists */}
             {errorMessage && (
@@ -64,11 +66,29 @@ const DietarySelection = () => {
             </div>
             <button className="button is-primary mt-5 mb-5" id="btn-search" onClick={handleSearch}>Search</button>
 
-            {isLoading ? ( // Show spinner while loading
-                <LoadingSpinner />
-            ) : (
-                <ShowRecipes recipes={recipes} />
-            )}
+                <div className="columns mt-5 is-flex is-flex-direction-column is-justify-content-center is-align-items-center has-text-centered">
+                    <CheckboxGroup
+                        title="Dietary Preferences"
+                        options={dietOptions}
+                        selectedOptions={dietCriteria}
+                        onChange={(event) => handleCheckboxChange(event, 'diet')}
+                    />
+                    <CheckboxGroup
+                        title="Health Considerations"
+                        options={healthOptions}
+                        selectedOptions={healthCriteria}
+                        onChange={(event) => handleCheckboxChange(event, 'health')}
+                    />
+                </div>
+                <div className="is-flex is-justify-content-center">
+                    <button className="button is-primary is-large mt-5 mb-5 " onClick={handleSearch}>Search</button>
+                </div>
+                {isLoading ? ( // Show spinner while loading
+                    <LoadingSpinner />
+                ) : (
+                    <ShowRecipes recipes={recipes} />
+                )}
+            </div> 
         </main>
     );
 };
