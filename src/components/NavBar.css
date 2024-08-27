@@ -1,9 +1,26 @@
 .navbar-menu.is-active .navbar-item {
-    color: black;
+    color: #65edd8;
     text-align: center;
     font-size: 1.25rem;
 }
 
 .navbar-menu.is-active {
     background-color: #65edd8;
+}
+
+.navbar-burger .burger {
+    transition: background-color 0.3s;
+}
+
+.navbar-burger:hover {
+    background-color: #65edd8;    
+}
+
+.navbar-item {
+    transition: color 0.3s;
+}
+
+.navbar-item:hover {
+    color: #ffcc00;
+    background-color: #2bffdf;
 }

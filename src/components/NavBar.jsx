@@ -4,22 +4,36 @@ import './NavBar.css';
 
 const NavBar = () => {
     useEffect(() => {
-    // Add click event listener to toggle hamburger menu
-    const navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+        // Function to toggle menu visibility
+        const toggleMenu = (event) => {
+            const target = event.currentTarget.dataset.target;
+            const $target = document.getElementById(target);
 
-    if (navbarBurgers.length > 0) {
-        navbarBurgers.forEach(el => {
-            el.addEventListener('click', () => {
-                const target = el.dataset.target;
-                const $target = document.getElementById(target);
+            // Toggle the "is-active" class on both the "navbar-burger" and the target menu
+            event.currentTarget.classList.toggle('is-active');
+            $target.classList.toggle('is-active');
+        };
 
-                // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
-                el.classList.toggle('is-active');
-                $target.classList.toggle('is-active');
-            });
-        });
-    }
-    }, []);
+        // Function to close the menu
+        const closeMenu = () => {
+            const navbarBurgers = Array.from(document.querySelectorAll('.navbar-burger'));
+            const navbarMenu = document.getElementById('navbarMenu');
+
+            navbarBurgers.forEach(el => el.classList.remove('is-active'));
+            if (navbarMenu) {
+                navbarMenu.classList.remove('is-active');
+            }
+        };
+
+        // Add click event listeners to each navbar burger
+        const navbarBurgers = Array.from(document.querySelectorAll('.navbar-burger'));
+        navbarBurgers.forEach(el => el.addEventListener('click', toggleMenu));
+
+        // Add click event listeners to each navbar item to close the menu
+        const navbarItems = Array.from(document.querySelectorAll('.navbar-item'));
+        navbarItems.forEach(el => el.addEventListener('click', closeMenu));
+
+    }, []); // Empty dependency array ensures this runs only once on mount
 
     return (
         <nav className="navbar has-background-primary" role="navigation" aria-label="main navigation">
@@ -27,7 +41,13 @@ const NavBar = () => {
                 <Link to="/" className="navbar-item">
                     <h1 className="title is-4 has-text-black ml-6">Diet Delight</h1>
                 </Link>
-                <Link role="button" aria-label="menu" aria-expanded="false" className="navbar-burger burger" data-target="navbarMenu">
+                <Link 
+                    role="button" 
+                    aria-label="menu" 
+                    aria-expanded="false" 
+                    className="navbar-burger burger" 
+                    data-target="navbarMenu"
+                >
                     <span aria-hidden="true" className="has-text-black"></span>
                     <span aria-hidden="true" className="has-text-black"></span>
                     <span aria-hidden="true" className="has-text-black"></span>
