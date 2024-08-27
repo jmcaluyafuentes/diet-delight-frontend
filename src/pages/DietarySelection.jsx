@@ -4,6 +4,7 @@ import LoadingSpinner from '../components/LoadingSpinner.jsx';
 import ShowRecipes from './ShowRecipes.jsx';
 import { fetchRecipes } from '../utils/fetchRecipes.js';
 import { dietOptions, healthOptions } from '../utils/dietHealthOptions.js';
+import './DietarySelection.css'
 
 const DietarySelection = () => {
     const [dietCriteria, setDietCriteria] = useState([]);
@@ -61,7 +62,7 @@ const DietarySelection = () => {
                     onChange={(event) => handleCheckboxChange(event, 'health')}
                 />
             </div>
-            <button className="button is-primary mt-5 mb-5" onClick={handleSearch}>Search</button>
+            <button className="button is-primary mt-5 mb-5" id="btn-search" onClick={handleSearch}>Search</button>
 
             {isLoading ? ( // Show spinner while loading
                 <LoadingSpinner />

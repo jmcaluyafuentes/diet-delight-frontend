@@ -124,7 +124,7 @@ const FeaturedRecipes = () => {
                                         <div className="has-text-centered mt-3">
                                             <button
                                                 onClick={() => handleAddToPrint(recipe.instructionsUrl)}
-                                                className={`button is-link ${selectedRecipes.has(recipe.instructionsUrl) ? 'is-danger' : ''}`}
+                                                className={`button is-link ${selectedRecipes.has(recipe.instructionsUrl) ? 'is-danger' : ''}`} id="btn-add-to-print"
                                             >
                                                 {selectedRecipes.has(recipe.instructionsUrl) ? 'Remove from Print' : 'Add to Print'}
                                             </button>
@@ -136,7 +136,7 @@ const FeaturedRecipes = () => {
                     </div>
                     {selectedRecipes.size > 0 && (
                         <div className="has-text-centered mt-4">
-                            <button onClick={handlePrintToPDF} className="button is-primary">
+                            <button onClick={handlePrintToPDF} className="button is-primary" id="btn-print-to-pdf">
                                 Print to PDF
                             </button>
                         </div>
