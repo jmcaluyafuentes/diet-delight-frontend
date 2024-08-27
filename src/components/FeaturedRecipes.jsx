@@ -42,10 +42,11 @@ const FeaturedRecipes = () => {
                 console.error('Error fetching recipes:', error);
                 setAllRecipes([]);
                 setDisplayedRecipes([]);
-            } finally {
+            } 
+            finally {
                 setTimeout(() => {
                     setIsLoading(false); // End loading after a delay
-                }, 3000);
+                }, 10);
             }
         };
 
@@ -94,7 +95,7 @@ const FeaturedRecipes = () => {
                 <LoadingSpinner />
             ) : (
                 <>
-                    <h2 className="title is-4 has-text-centered mt-5">
+                    <h2 className="title is-3 has-text-centered mt-5">
                         Featured Recipes for a {randomDiet} Diet
                     </h2>
                     <div className="columns is-multiline is-centered">
@@ -111,13 +112,12 @@ const FeaturedRecipes = () => {
                                     <div className="card-content">
                                         <div className="media">
                                             <div className="media-content is-flex is-justify-content-center is-align-items-center has-text-centered">
-                                                <p className="title is-4">{recipe.title}</p>
+                                                <p className="title is-5">{recipe.title}</p>
                                             </div>
                                         </div>
                                         <div className="content is-flex is-flex-direction-column is-justify-content-center is-align-items-center has-text-centered">
-                                            <h5 className="title is-5">Nutrition:</h5>
-                                            <p>Calories: {`${recipe.caloriesPerServing.toFixed(2)} kcal`}</p>
-                                            <p>Serving Size: {recipe.servingSize}</p>
+                                            <p>Calories: {`${recipe.caloriesPerServing.toFixed(2)} kcal`} <br />
+                                                Serving Size: {recipe.servingSize}</p>
                                             <p><strong>Diet Labels:</strong> {recipe.dietLabels.join(', ')}</p>
                                             <p className="mt-2 ml-4">Source: <a href={recipe.instructionsUrl} target="_blank" rel="noopener noreferrer" className="has-text-info"><em>{recipe.source}</em></a></p>
                                         </div>
