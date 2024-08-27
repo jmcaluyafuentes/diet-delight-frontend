@@ -39,7 +39,7 @@ const NavBar = () => {
         <nav className="navbar has-background-primary" role="navigation" aria-label="main navigation">
             <div className="navbar-brand">
                 <Link to="/" className="navbar-item">
-                    <h1 className="title is-4 has-text-black ml-6">Diet Delight</h1>
+                    <h1 className="title is-4 has-text-black ml-5 mr-5">Diet Delight</h1>
                 </Link>
                 <Link 
                     role="button" 

@@ -29,6 +29,13 @@ const ShowRecipes = ({ recipes }) => {
         navigate('/print', { state: { recipes: selectedRecipeDetails } });
     };
 
+    const scrollToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth',
+        });
+    };
+
     if (recipes.length === 0) {
         return (
         <>
@@ -128,11 +135,13 @@ const ShowRecipes = ({ recipes }) => {
             <div className="has-text-centered mb-4">
             <button
                 onClick={handlePrintToPDF}
-                className="button is-primary"
+                className="button is-primary mt-5 mb-5 is-large"
                 disabled={selectedRecipes.size === 0}
             >
                 Print to PDF
             </button>
+            <br />
+            <button onClick={scrollToTop} className="button is-link mt-5 is-large">Return to Top</button>
             </div>
         </div>
         </>

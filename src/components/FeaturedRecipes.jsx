@@ -103,13 +103,13 @@ const FeaturedRecipes = () => {
                             <div key={recipe.instructionsUrl} className="column is-one-quarter">
                                 <div className="recipe card">
                                     <div className="card-image is-flex is-justify-content-center is-align-items-center">
-                                        <figure className="image">
+                                        <figure className="image mt-3 ">
                                             <a href={recipe.instructionsUrl} className="button ml-2" target="_blank" rel="noopener noreferrer">
                                                 <img src={recipe.image} alt={recipe.title}/>
                                             </a>
                                         </figure>
                                     </div>
-                                    <div className="card-content" style={{minHeight: '30vh'}}>
+                                    <div className="card-content">
                                         <div className="media">
                                             <div className="media-content is-flex is-justify-content-center is-align-items-center has-text-centered">
                                                 <p className="title is-5">{recipe.title}</p>

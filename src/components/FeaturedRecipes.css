@@ -20,3 +20,29 @@ figure a img {
     max-height: 30vh; 
     object-fit: cover
 }
+
+.columns.is-centered {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+}
+
+.column.is-one-quarter {
+    display: flex;
+    flex-direction: column;
+}
+
+.recipe.card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.recipe .card-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
