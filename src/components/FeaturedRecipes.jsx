@@ -46,7 +46,7 @@ const FeaturedRecipes = () => {
             finally {
                 setTimeout(() => {
                     setIsLoading(false); // End loading after a delay
-                }, 10);
+                }, 1000);
             }
         };
 
@@ -61,7 +61,7 @@ const FeaturedRecipes = () => {
                     const shuffled = shuffleArray([...allRecipes]);
                     setDisplayedRecipes(shuffled.slice(0, 4));
                 }
-            }, 10000);
+            }, 5000);
         }
 
         return () => clearInterval(intervalId);
