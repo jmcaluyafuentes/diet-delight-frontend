@@ -4,6 +4,7 @@ import LoadingSpinner from '../components/LoadingSpinner.jsx';
 import ShowRecipes from './ShowRecipes.jsx';
 import { fetchRecipes } from '../utils/fetchRecipes.js';
 import { dietOptions, healthOptions } from '../utils/dietHealthOptions.js';
+import './DietarySelection.css'
 
 const DietarySelection = () => {
     const [dietCriteria, setDietCriteria] = useState([]);
@@ -41,12 +42,29 @@ const DietarySelection = () => {
                 <h1 className="title is-2 has-text-centered">Recipe Search</h1>
                 <h2 className="title is-3 mt-6 is-flex is-justify-content-center">Select Your Dietary and Health Criteria</h2>
 
-                {/* Display error message if exists */}
-                {errorMessage && (
-                    <div className="notification is-danger is-light">
-                        {errorMessage}
-                    </div>
-                )}
+
+            {/* Display error message if exists */}
+            {errorMessage && (
+                <div className="notification is-danger is-light">
+                    {errorMessage}
+                </div>
+            )}
+
+            <div className="columns mt-5">
+                <CheckboxGroup
+                    title="Dietary Preferences"
+                    options={dietOptions}
+                    selectedOptions={dietCriteria}
+                    onChange={(event) => handleCheckboxChange(event, 'diet')}
+                />
+                <CheckboxGroup
+                    title="Health Considerations"
+                    options={healthOptions}
+                    selectedOptions={healthCriteria}
+                    onChange={(event) => handleCheckboxChange(event, 'health')}
+                />
+            </div>
+            <button className="button is-primary mt-5 mb-5" id="btn-search" onClick={handleSearch}>Search</button>
 
                 <div className="columns mt-5 is-flex is-flex-direction-column is-justify-content-center is-align-items-center has-text-centered">
                     <CheckboxGroup

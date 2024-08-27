@@ -38,8 +38,8 @@ const PrintPreview = () => {
   return (
     <div className="print-preview-container">
       <div className="print-preview-header">
-        <button onClick={handlePrint} className="button is-primary">Print</button>
-        <button onClick={handleCancel} className="button is-link">Cancel</button>
+        <button onClick={handlePrint} className="button is-primary" id="btn-download">Download PDF</button>
+        <button onClick={handleCancel} className="button is-link" id="btn-cancel">Cancel</button>
       </div>
       <div className="print-preview-content">
         {recipes.length > 0 ? (
