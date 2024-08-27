@@ -109,7 +109,7 @@ const FeaturedRecipes = () => {
                                             </a>
                                         </figure>
                                     </div>
-                                    <div className="card-content">
+                                    <div className="card-content" style={{minHeight: '30vh'}}>
                                         <div className="media">
                                             <div className="media-content is-flex is-justify-content-center is-align-items-center has-text-centered">
                                                 <p className="title is-5">{recipe.title}</p>
