@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import CheckboxGroup from '../components/CheckboxGroup.jsx';
 import LoadingSpinner from '../components/LoadingSpinner.jsx';
-import PreviewRecipes from './ShowRecipes.jsx';
+import ShowRecipes from './ShowRecipes.jsx';
 import { fetchRecipes } from '../utils/fetchRecipes.js';
 import { dietOptions, healthOptions } from '../utils/dietHealthOptions.js';
 
@@ -66,7 +66,7 @@ const DietarySelection = () => {
             {isLoading ? ( // Show spinner while loading
                 <LoadingSpinner />
             ) : (
-                <PreviewRecipes recipes={recipes} />
+                <ShowRecipes recipes={recipes} />
             )}
         </main>
     );
