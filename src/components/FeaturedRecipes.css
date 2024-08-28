@@ -1,3 +1,7 @@
+#homepagefeaturedrecipetitle {
+    color: hsl(171, 100%, 41%);
+}
+
 .recipe-display a.button {
     border: none;
 }
@@ -49,9 +53,11 @@ figure a img {
 
 #btn-print-to-pdf:hover {
     background-color: aqua;
+    
 }
 
 #btn-add-to-print:hover {
     background-color: #1dbeda;
 
 }
+
