@@ -140,14 +140,14 @@ const ShowRecipes = ({ recipes }) => {
             <div className="has-text-centered mb-4">
             <button
                 onClick={handlePrintToPDF}
-                className="button is-primary mt-5 mb-5 is-large"
+                className="button is-primary mt-5 mb-5 is-medium"
                 disabled={selectedRecipes.size === 0}
                 id="btn-print-to-pdf"
             >
                 Print to PDF
             </button>
             <br />
-            <button onClick={scrollToTop} className="button is-link mt-5 is-large">Return to Top</button>
+            <button onClick={scrollToTop} className="button is-link mt-5 is-medium">Return to Top</button>
             </div>
         </div>
         </>
