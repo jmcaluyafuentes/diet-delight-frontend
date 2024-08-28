@@ -24,3 +24,17 @@
     margin: 1rem auto;
     border-radius: 30px;
 }
+
+/* Media query for tablet view */
+@media (max-width: 1030px) {
+    .error-message {
+        width: 70%;
+    }
+}
+
+/* Media query for mobile view */
+@media (max-width: 700px) {
+    .error-message {
+        width: 90%;
+    }
+}
