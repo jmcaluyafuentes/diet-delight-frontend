@@ -17,18 +17,19 @@
 }
 
 .navbar-item {
-    transition: color 0.3s;
+    position: relative;
+    transition: text-decoration-color 0.3s, text-underline-offset 0.3s;
 }
 
 .navbar-item:hover {
-    background-color: white;
+    text-decoration: underline;
+    text-decoration-color: black;
+    text-decoration-thickness: 1.5px;
+    background-color: transparent;
+    text-underline-offset: 5px;
 }
 
-.navbar-item.active {
-    background-color: #f5a623; 
-    color: #fff; 
-}
-
-.navbar-item {
-    margin: 0 3rem; /* Adjust as needed */
+.navbar-item:active, .navbar-item:focus, .navbar-item:focus-within {
+    background-color: transparent !important;
+    --bulma-navbar-item-background-a: 0;
 }
