@@ -7,7 +7,7 @@ import NavBar from './components/NavBar.jsx';
 import Footer from './components/Footer.jsx';
 import About from './pages/About.jsx';
 import Contact from './pages/Contact.jsx';
-// import './App.css';
+import './App.css';
 
 const App = () => {
     return (
