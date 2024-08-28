@@ -40,10 +40,7 @@ const NavBar = () => {
     return (
         <nav className="navbar has-background-primary" role="navigation" aria-label="main navigation">
             <div className="navbar-brand" id="navbar-main">
-                {/* <Link to="/" className="navbar-item" >
-                    <h1 className="title is-4 has-text-black ml-5 mr-5">Diet Delight</h1>
-                </Link> */}
-                <Link 
+                <Link   
                     to="/" 
                     className={`navbar-main ${location.pathname === '/' ? 'active' : ''} has-text-black is-flex is-align-items-center`}
                 >

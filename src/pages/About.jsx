@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const About = () => {
     return (
         <main className="section is-flex is-align-item-center is-justify-content-center">
-            <div className="box" style={{ maxWidth: "50vw" }}>
+            <div className="box" style={{ maxWidth: "80vw" }}>
                 <h1 className="title is-2 has-text-centered">About</h1>
                 <div className="has-text-centered">
                     <p className="mb-5">At Fit Life Gym, we believe that fitness is more than just about the workouts — it is also about nourishing your body with the right foods.</p>

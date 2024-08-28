@@ -116,7 +116,7 @@ const FeaturedRecipes = () => {
                                             </div>
                                         </div>
                                         <div className="content is-flex is-flex-direction-column is-justify-content-center is-align-items-center has-text-centered">
-                                            <p>Calories: {`${recipe.caloriesPerServing.toFixed(2)} kcal`} <br />
+                                            <p>Calories: {`${recipe.caloriesPerServing.toFixed(2)} kcal/serving`} <br />
                                                 Serving Size: {recipe.servingSize}</p>
                                             <p><strong>Diet Labels:</strong> {recipe.dietLabels.join(', ')}</p>
                                             <p className="mt-2 ml-4">Source: <a href={recipe.instructionsUrl} target="_blank" rel="noopener noreferrer" className="has-text-info"><em>{recipe.source}</em></a></p>
