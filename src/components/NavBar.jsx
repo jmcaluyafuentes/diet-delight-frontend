@@ -42,7 +42,7 @@ const NavBar = () => {
             <div className="navbar-brand" id="navbar-main">
                 <Link   
                     to="/" 
-                    className={`navbar-main ${location.pathname === '/' ? 'active' : ''} has-text-black is-flex is-align-items-center`}
+                    className={`navbar-item ${location.pathname === '/' ? 'active' : ''} has-text-black`}
                 >
                 <h1 className="title is-4 has-text-black ml-5 mr-5 has-text-centered">Diet Delight</h1>
                 </Link>
