@@ -45,6 +45,7 @@ figure a img {
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
+}
 
 #btn-print-to-pdf:hover {
     background-color: aqua;
