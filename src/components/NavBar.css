@@ -1,26 +1,13 @@
-.navbar-menu.is-active .navbar-item {
+.navbar-menu.is-active, .navbar-item {
     color: #65edd8;
     text-align: center;
     font-size: 1.25rem;
 }
 
 .navbar-menu.is-active {
-    background-color: #65edd8;
+    background-color: hsl(171, 100%, 41%);
 }
 
-.navbar-burger .burger {
-    transition: background-color 0.3s;
-}
-
-.navbar-burger:hover {
-    background-color: white;    
-}
-
-.navbar-item {
-    position: relative;
-    text-decoration: none;
-    transition: text-decoration-color 0.3s, text-underline-offset 0.3s;
-}
 
 .navbar-item:hover {
     background-color: hsl(48, 100%, 67%);
@@ -30,3 +17,12 @@
     background-color: transparent !important;
     --bulma-navbar-item-background-a: 0;
 }
+
+#navbar-main:hover{
+    color: red;
+}
+
+#navbar-main {
+    color: black;
+}
+
