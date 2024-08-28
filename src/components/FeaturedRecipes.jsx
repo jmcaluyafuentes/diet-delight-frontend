@@ -100,7 +100,7 @@ const FeaturedRecipes = () => {
                     </h2>
                     <div className="columns is-multiline is-centered">
                         {displayedRecipes.map(recipe => (
-                            <div key={recipe.instructionsUrl} className="column is-one-quarter-desktop is-half-tablet is-full-mobile">
+                            <div key={recipe.instructionsUrl} className="column is-one-quarter-desktop is-full-mobile">
                                 <div className="recipe card">
                                     <div className="card-image is-flex is-justify-content-center is-align-items-center">
                                         <figure className="image mt-3 ">
@@ -126,7 +126,7 @@ const FeaturedRecipes = () => {
                                                 onClick={() => handleAddToPrint(recipe.instructionsUrl)}
                                                 className={`button is-link ${selectedRecipes.has(recipe.instructionsUrl) ? 'is-danger' : ''}`} id="btn-add-to-print"
                                             >
-                                                {selectedRecipes.has(recipe.instructionsUrl) ? 'Remove from Print' : 'Add to Print'}
+                                                {selectedRecipes.has(recipe.instructionsUrl) ? 'Remove' : 'Add to Print'}
                                             </button>
                                         </div>
                                     </div>
