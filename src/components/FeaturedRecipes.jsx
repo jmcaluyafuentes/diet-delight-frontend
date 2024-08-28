@@ -100,7 +100,7 @@ const FeaturedRecipes = () => {
                     </h2>
                     <div className="columns is-multiline is-centered">
                         {displayedRecipes.map(recipe => (
-                            <div key={recipe.instructionsUrl} className="column is-one-quarter-desktop is-full-mobile">
+                            <div key={recipe.instructionsUrl} className="column is-one-quarter-desktop is-half-tablet is-full-mobile">
                                 <div className="recipe card">
                                     <div className="card-image is-flex is-justify-content-center is-align-items-center">
                                         <figure className="image mt-3 ">
