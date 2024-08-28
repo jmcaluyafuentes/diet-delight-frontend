@@ -23,11 +23,7 @@
 }
 
 .navbar-item:hover {
-    text-decoration: underline;
-    text-decoration-color: black;
-    text-decoration-thickness: 2px;
-    text-underline-offset: 4px;
-    background-color: transparent;
+    background-color: hsl(48, 100%, 67%);
 }
 
 .navbar-item:active, .navbar-item:focus, .navbar-item:focus-within {

@@ -20,6 +20,7 @@ const About = () => {
                     </div>
                     <div className="column is-one-half-desktop is-full-mobile mb-5">
                         <p>We also offer a curated list of Featured Recipes, so you can explore and try out new meals that complement your fitness journey.</p>
+                        <p className="mb-5 is-hidden-mobile is-hidden-desktop"></p>
                         <Link to="/" className="button is-warning mt-5" onClick={() => {
                             const element = document.getElementById("featuredrecipes");
                             if (element) {

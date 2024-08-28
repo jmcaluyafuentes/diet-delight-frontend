@@ -1,9 +1,9 @@
 #btn-search:hover {
-    background-color: yellow;
+    background-color: hsl(171, 100%, 41%);
 }
 
 .title.is-3 {
-    color: yellow;
+    color: hsl(171, 100%, 41%);
 }
 
 .section {

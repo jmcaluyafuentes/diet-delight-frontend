@@ -95,12 +95,12 @@ const FeaturedRecipes = () => {
                 <LoadingSpinner />
             ) : (
                 <>
-                    <h2 className="title is-3 has-text-centered mt-5">
+                    <h2 className="title is-3 has-text-centered mt-5" id="homepagefeaturedrecipetitle">
                         Featured Recipes for a {randomDiet} Diet
                     </h2>
                     <div className="columns is-multiline is-centered">
                         {displayedRecipes.map(recipe => (
-                            <div key={recipe.instructionsUrl} className="column is-one-quarter-desktop is-full-mobile">
+                            <div key={recipe.instructionsUrl} className="column is-one-quarter-desktop is-half-tablet is-full-mobile">
                                 <div className="recipe card">
                                     <div className="card-image is-flex is-justify-content-center is-align-items-center">
                                         <figure className="image mt-3 ">
