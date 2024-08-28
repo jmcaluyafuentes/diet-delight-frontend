@@ -58,7 +58,7 @@ const ShowRecipes = ({ recipes }) => {
                 console.error("Recipe identifier is missing:", recipe);
                 }
                 return (
-                <div key={recipe.instructionsUrl} className="column is-one-third">
+                <div key={recipe.instructionsUrl} className="column is-one-third-desktop is-half-tablet">
                     <div className="recipe card">
                     <div className="card-image">
                         <figure className="image">

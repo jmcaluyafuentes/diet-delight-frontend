@@ -50,22 +50,6 @@ const DietarySelection = () => {
                 </div>
             )}
 
-            <div className="columns mt-5">
-                <CheckboxGroup
-                    title="Dietary Preferences"
-                    options={dietOptions}
-                    selectedOptions={dietCriteria}
-                    onChange={(event) => handleCheckboxChange(event, 'diet')}
-                />
-                <CheckboxGroup
-                    title="Health Considerations"
-                    options={healthOptions}
-                    selectedOptions={healthCriteria}
-                    onChange={(event) => handleCheckboxChange(event, 'health')}
-                />
-            </div>
-            <button className="button is-primary mt-5 mb-5" id="btn-search" onClick={handleSearch}>Search</button>
-
                 <div className="columns mt-5 is-flex is-flex-direction-column is-justify-content-center is-align-items-center has-text-centered">
                     <CheckboxGroup
                         title="Dietary Preferences"
