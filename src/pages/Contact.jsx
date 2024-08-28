@@ -7,7 +7,7 @@ const Contact = () => {
             <div className="box" style={{ maxWidth: "80vw" }}>
                 <h1 className="title is-2 has-text-centered">Contact</h1>
                 <div className="has-text-centered mb-5">
-                    <p className="mb-5">Diet Delight was created by 3 aspiring Software Developers</p>
+                    <p className="mb-5">Diet Delight was developed by three aspiring Software Developers.</p>
                 </div>
                 <div className="columns is-centered has-text-centered">
                     <div className="column is-one-third-desktop is-full-mobile mb-5" >
