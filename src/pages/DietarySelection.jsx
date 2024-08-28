@@ -32,7 +32,6 @@ const DietarySelection = () => {
             return;
         }
         setErrorMessage('');
-        setIsLoading(true);
         fetchRecipes(dietCriteria, healthCriteria, setIsLoading, setRecipes);
     };
 
@@ -42,13 +41,12 @@ const DietarySelection = () => {
                 <h1 className="title is-1 has-text-centered">Recipe Search</h1>
                 <h2 className="title is-3 mt-6 is-flex is-justify-content-center has-text-centered">Select Your Dietary and Health Criteria</h2>
 
-
-            {/* Display error message if exists */}
-            {errorMessage && (
-                <div className="error-message">
-                    {errorMessage}
-                </div>
-            )}
+                {/* Display error message if exists */}
+                {errorMessage && (
+                    <div className="error-message">
+                        {errorMessage}
+                    </div>
+                )}
 
                 <div className="columns mt-5 is-flex is-flex-direction-column is-justify-content-center is-align-items-center has-text-centered">
                     <CheckboxGroup
