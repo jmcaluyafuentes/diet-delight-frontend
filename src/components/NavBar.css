@@ -1,34 +1,38 @@
-.navbar-menu.is-active .navbar-item {
-    color: #65edd8;
-    text-align: center;
-    font-size: 1.25rem;
+/* Ensure navbar burger menu has a fixed color */
+.navbar-burger {
+    background-color: #65edd8; /* Set the desired background color */
+    color: #000; /* Set the desired text color */
+    border-radius: 5px; /* Optional: add some styling like rounding */
 }
 
-.navbar-menu.is-active {
-    background-color: #65edd8;
-}
-
-.navbar-burger .burger {
-    transition: background-color 0.3s;
-}
-
+/* Hover effect for the burger menu */
 .navbar-burger:hover {
-    background-color: white;    
+    background-color: #4cc9a2; /* A slightly darker shade on hover */
 }
 
-.navbar-item {
-    transition: color 0.3s;
+/* Dropdown menu color settings */
+.navbar-menu {
+    background-color: #65edd8 !important; /* Set dropdown background color */
 }
 
-.navbar-item:hover {
-    background-color: white;
-}
-
+/* Active menu item background and text color */
 .navbar-item.active {
-    background-color: #f5a623; 
-    color: #fff; 
+    background-color: #f5a623; /* Set the active menu item background color */
+    color: #fff !important; /* Set the active menu item text color */
 }
 
+/* General navbar item hover state */
+.navbar-item:hover {
+    background-color: #4cc9a2; /* A slightly darker shade on hover */
+    color: #fff; /* Text color on hover */
+}
+
+/* Override default color inheritance from light/dark mode */
 .navbar-item {
-    margin: 0 3rem; /* Adjust as needed */
+    color: #000 !important; /* Set a fixed text color */
+}
+
+/* Adjustments for spacing */
+.navbar-item {
+    margin: 0 1rem; /* Adjust the margin as needed */
 }
