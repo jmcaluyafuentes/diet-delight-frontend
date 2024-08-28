@@ -1,4 +1,4 @@
-# Diet Delight -- TEST
+# Diet Delight
 
 A full stack web application by John Fuentes, Hy Nguyen and Branden Chiem.
 
