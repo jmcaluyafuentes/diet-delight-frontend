@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
-import CheckboxGroup from '../components/CheckboxGroup.jsx';
-import LoadingSpinner from '../components/LoadingSpinner.jsx';
-import ShowRecipes from './ShowRecipes.jsx';
-import { fetchRecipes } from '../utils/fetchRecipes.js';
 import { dietOptions, healthOptions } from '../utils/dietHealthOptions.js';
+import ShowRecipes from './ShowRecipes.jsx';
+import CheckboxGroup from '../components/CheckboxGroup.jsx';
+import DisplayErrorMessage from '../components/DisplayErrorMessage.jsx'
+import { fetchRecipes } from '../utils/fetchRecipes.js';
+import LoadingSpinner from '../components/LoadingSpinner.jsx';
 import './DietarySelection.css'
 
 const DietarySelection = () => {
     const [dietCriteria, setDietCriteria] = useState([]);
     const [healthCriteria, setHealthCriteria] = useState([]);
-    const [errorMessage, setErrorMessage] = useState('');
     const [recipes, setRecipes] = useState([]);
+    const [errorMessage, setErrorMessage] = useState('');
     const [isLoading, setIsLoading] = useState(false);
 
     const handleCheckboxChange = (event, type) => {
@@ -42,11 +43,7 @@ const DietarySelection = () => {
                 <h2 className="title is-3 mt-6 is-flex is-justify-content-center has-text-centered">Select Your Dietary and Health Criteria</h2>
 
                 {/* Display error message if exists */}
-                {errorMessage && (
-                    <div className="error-message">
-                        {errorMessage}
-                    </div>
-                )}
+                <DisplayErrorMessage message={errorMessage} />
 
                 <div className="columns mt-5 is-flex is-flex-direction-column is-justify-content-center is-align-items-center has-text-centered">
                     <CheckboxGroup
