@@ -1,33 +1,30 @@
 :root {
-    --glow-color: #ff00f7;
-    --glow-color1: rgb(0, 0, 0);
+    --glow-color: #d10e0e;
+    --glow-color1: rgb(255, 4, 192);
 }
 
 .no-option-selected {
+    color: #ffffff;
     text-shadow: 
         0 0 5px var(--glow-color), 
         0 0 10px var(--glow-color), 
-        0 0 15px var(--glow-color), 
-        0 0 20px var(--glow-color), 
-        0 0 25px var(--glow-color), 
-        0 0 30px var(--glow-color), 
-        0 0 35px var(--glow-color);
+        0 0 15px var(--glow-color),
+        0 0 20px var(--glow-color),
+        0 0 25px var(--glow-color);
     font-size: 1.2rem;
 }
 
 .no-recipe-found {
+    color: white;
     text-shadow: 
         0 0 5px var(--glow-color1), 
         0 0 10px var(--glow-color1), 
         0 0 15px var(--glow-color1), 
         0 0 20px var(--glow-color1), 
-        0 0 25px var(--glow-color1), 
-        0 0 30px var(--glow-color1), 
-        0 0 35px var(--glow-color1);
+        0 0 25px var(--glow-color1);
 }
 
 .error {
-    color: #fff;
     text-align: center;
     padding: 0.5rem;
     margin: 1rem auto;

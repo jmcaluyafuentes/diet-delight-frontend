@@ -44,7 +44,7 @@ cd diet-delight-frontend
 npm install
 ```
 
-###  4. Running the Application
+### 4. Running the Application
 
 To start the development server, run:
 
