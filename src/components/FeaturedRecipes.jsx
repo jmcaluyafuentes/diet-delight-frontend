@@ -122,12 +122,13 @@ const FeaturedRecipes = () => {
                                         </div>
 
                                         <div className="has-text-centered mt-3">
-                                            <button
-                                                onClick={() => handleAddToPrint(recipe.instructionsUrl)}
-                                                className={`button is-link ${selectedRecipes.has(recipe.instructionsUrl) ? 'is-danger' : ''}`} id="btn-add-to-print"
-                                            >
-                                                {selectedRecipes.has(recipe.instructionsUrl) ? 'Remove' : 'Add to Print'}
-                                            </button>
+                                            {/* AddToPrintButton component */}
+                                            <AddToPrintButton
+                                                recipe={recipe}
+                                                setSelectedRecipes={setSelectedRecipes}
+                                                isSelected={selectedRecipes.has(recipe.instructionsUrl)}
+                                                setIsShuffling={setIsShuffling}
+                                            />
                                         </div>
                                     </div>
                                 </div>
