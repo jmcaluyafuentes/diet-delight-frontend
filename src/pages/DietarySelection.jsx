@@ -32,7 +32,7 @@ const DietarySelection = () => {
                 <h2 className="title is-3 mt-6 is-flex is-justify-content-center has-text-centered">Select Your Dietary and Health Criteria</h2>
 
                 {/* Display error message if exists */}
-                <DisplayErrorMessage message={errorMessage} style={'error-message'}/>
+                <DisplayErrorMessage message={errorMessage} style={'no-option-selected'}/>
 
                 <div className="columns mt-5 is-flex is-flex-direction-column is-justify-content-center is-align-items-center has-text-centered">
                     <CheckboxGroup

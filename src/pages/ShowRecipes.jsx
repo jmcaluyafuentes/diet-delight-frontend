@@ -40,7 +40,7 @@ const ShowRecipes = ({ recipes }) => {
 
     if (recipes.length === 0) {
         return (
-            <DisplayErrorMessage message={'Sorry, there are no recipes found. Please try other criteria.'} style={''}/>
+            <DisplayErrorMessage message={'Sorry, there are no recipes found. Please try other criteria.'} style={'no-recipe-found'}/>
         );
     }
 

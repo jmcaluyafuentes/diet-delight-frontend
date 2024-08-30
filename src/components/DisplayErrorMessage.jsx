@@ -7,9 +7,11 @@ const DisplayErrorMessage = ({ message, style }) => {
         return null;
     }
 
+    const combinedStyle = `${style} error`
+
     // Render the error message if it exists
     return (
-        <div className={style}>
+        <div className={combinedStyle}>
             {message}
         </div>
     )

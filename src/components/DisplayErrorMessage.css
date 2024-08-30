@@ -1,12 +1,35 @@
-.error-message {
-    color: #cb4742;
-    font-size: 1.2rem;
+.error {
     text-align: center;
-    background-color: #f7e2e1;
     padding: 0.5rem;
+    font-size: 1.2rem;
     margin: 1rem auto;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     width: 50%;
     margin: 1rem auto;
+}
+
+.no-option-selected {
+    color: #cb4742;
+    background-color: #f7e2e1;
     border-radius: 30px;
+}
+
+.no-recipe-found {
+    color: #cb4742;
+    background-color: #f7e2e1;
+    border-radius: 30px;
+}
+
+/* Media query for tablet view */
+@media (max-width: 1030px) {
+    .error {
+        width: 70%;
+    }
+}
+
+/* Media query for mobile view */
+@media (max-width: 700px) {
+    .error {
+        width: 90%;
+    }
 }
