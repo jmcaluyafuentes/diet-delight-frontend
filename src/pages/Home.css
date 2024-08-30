@@ -1,0 +1,13 @@
+.hero {
+    min-height: 80vh
+}
+
+#hero-body {
+    padding: 0;
+}
+
+#featuredrecipes {
+    padding-left: 2vw;
+    padding-right: 2vw;
+    padding-bottom: 5vh
+}
