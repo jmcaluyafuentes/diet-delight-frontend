@@ -1,6 +1,6 @@
 import React from 'react';
 import HeroBanner from '../components/Herobanner';
-import RecipeDisplay from '../components/FeaturedRecipes';
+import FeaturedRecipes from '../components/FeaturedRecipes';
 
 const Home = () => {
     return (
@@ -10,7 +10,7 @@ const Home = () => {
             </div>
 
             <div id="featuredrecipes" className="featured-recipes"  style={{paddingLeft: '2vw', paddingRight: '2vw', paddingBottom: '5vh'}}>
-                <RecipeDisplay />
+                <FeaturedRecipes />
             </div>
         </section>
     );

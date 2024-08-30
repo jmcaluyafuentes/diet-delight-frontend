@@ -44,9 +44,7 @@ const FeaturedRecipes = () => {
                 setDisplayedRecipes([]);
             } 
             finally {
-                setTimeout(() => {
-                    setIsLoading(false); // End loading after a delay
-                }, 1000);
+                setIsLoading(false); // End loading after a delay
             }
         };
 

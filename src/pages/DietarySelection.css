@@ -1,40 +1,13 @@
-#btn-search:hover {
-    background-color: hsl(171, 100%, 41%);
-}
+/* #btn-search:hover {
+    background-color: #00d1b2;
+} */
 
 .title.is-3 {
-    color: hsl(171, 100%, 41%);
+    color: #00d1b2;
 }
 
 .section {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.error-message {
-    color: #cb4742;
-    font-size: 1.2rem;
-    text-align: center;
-    background-color: #f7e2e1;
-    padding: 0.5rem;
-    margin: 1rem auto;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: 50%;
-    margin: 1rem auto;
-    border-radius: 30px;
-}
-
-/* Media query for tablet view */
-@media (max-width: 1030px) {
-    .error-message {
-        width: 70%;
-    }
-}
-
-/* Media query for mobile view */
-@media (max-width: 700px) {
-    .error-message {
-        width: 90%;
-    }
 }

@@ -1,17 +1,19 @@
 import React, { useState } from 'react';
-import CheckboxGroup from '../components/CheckboxGroup.jsx';
-import LoadingSpinner from '../components/LoadingSpinner.jsx';
-import ShowRecipes from './ShowRecipes.jsx';
-import { fetchRecipes } from '../utils/fetchRecipes.js';
 import { dietOptions, healthOptions } from '../utils/dietHealthOptions.js';
+import ShowRecipes from './ShowRecipes.jsx';
+import CheckboxGroup from '../components/CheckboxGroup.jsx';
+import DisplayErrorMessage from '../components/DisplayErrorMessage.jsx'
+import SearchRecipeButton from '../components/SearchRecipeButton.jsx'
+import LoadingSpinner from '../components/LoadingSpinner.jsx';
 import './DietarySelection.css'
 
 const DietarySelection = () => {
     const [dietCriteria, setDietCriteria] = useState([]);
     const [healthCriteria, setHealthCriteria] = useState([]);
-    const [errorMessage, setErrorMessage] = useState('');
     const [recipes, setRecipes] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
+    const [isSearchClicked, setIsSearchClicked] = useState(false);
+    const [isLoading, setIsLoading] = useState(false)
 
     const handleCheckboxChange = (event, type) => {
         const value = event.target.value;
@@ -26,15 +28,6 @@ const DietarySelection = () => {
         }
     };
 
-    const handleSearch = () => {
-        if (dietCriteria.length === 0 && healthCriteria.length === 0) {
-            setErrorMessage('Please select at least one dietary or health criterion');
-            return;
-        }
-        setErrorMessage('');
-        fetchRecipes(dietCriteria, healthCriteria, setIsLoading, setRecipes);
-    };
-
     return (
         <main className="section">
             <div className="box">
@@ -42,11 +35,7 @@ const DietarySelection = () => {
                 <h2 className="title is-3 mt-6 is-flex is-justify-content-center has-text-centered">Select Your Dietary and Health Criteria</h2>
 
                 {/* Display error message if exists */}
-                {errorMessage && (
-                    <div className="error-message">
-                        {errorMessage}
-                    </div>
-                )}
+                <DisplayErrorMessage message={errorMessage} style={'no-option-selected'}/>
 
                 <div className="columns mt-5 is-flex is-flex-direction-column is-justify-content-center is-align-items-center has-text-centered">
                     <CheckboxGroup
@@ -62,13 +51,26 @@ const DietarySelection = () => {
                         onChange={(event) => handleCheckboxChange(event, 'health')}
                     />
                 </div>
-                <div className="is-flex is-justify-content-center">
-                    <button className="button is-warning is-medium mt-5 mb-5" id="btn-search" onClick={handleSearch}>Search</button>
-                </div>
-                {isLoading ? ( // Show spinner while loading
-                    <LoadingSpinner />
-                ) : (
+                
+                {/* Add search button with its functionality */}
+                <SearchRecipeButton 
+                    dietCriteria={dietCriteria} 
+                    healthCriteria={healthCriteria} 
+                    setErrorMessage={setErrorMessage} 
+                    setRecipes={setRecipes}
+                    setIsSearchClicked={setIsSearchClicked}
+                    setIsLoading={setIsLoading}
+                />
+                
+                {/* Display the results after search button is clicked */}
+                {isSearchClicked && (
+                    // Display the loading spinner while waiting for the fetched data
+                    isLoading ? (
+                        <LoadingSpinner />
+                    ) : (
+                    // Display the recipes once available
                     <ShowRecipes recipes={recipes} />
+                    )
                 )}
             </div> 
         </main>

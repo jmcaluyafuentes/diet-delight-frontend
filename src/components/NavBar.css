@@ -5,12 +5,12 @@
 }
 
 .navbar-menu.is-active {
-    background-color: hsl(171, 100%, 41%);
+    background-color: #00d1b2;
 }
 
 
 .navbar-item:hover {
-    background-color: hsl(48, 100%, 67%);
+    background-color: #ffdd57;
 }
 
 .navbar-item:active, .navbar-item:focus, .navbar-item:focus-within {
