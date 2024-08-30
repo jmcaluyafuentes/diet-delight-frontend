@@ -1,7 +1,7 @@
 import React from 'react'
 import './DisplayErrorMessage.css'
 
-const DisplayErrorMessage = ({ message }) => {
+const DisplayErrorMessage = ({ message, style }) => {
     // If message prop is empty, return null to render nothing
     if (!message) {
         return null;
@@ -9,7 +9,7 @@ const DisplayErrorMessage = ({ message }) => {
 
     // Render the error message if it exists
     return (
-        <div className="error-message">
+        <div className={style}>
             {message}
         </div>
     )

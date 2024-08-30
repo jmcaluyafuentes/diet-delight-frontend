@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import DisplayErrorMessage from '../components/DisplayErrorMessage';
 import './ShowRecipes.css'
 
 const ShowRecipes = ({ recipes }) => {
@@ -39,13 +40,7 @@ const ShowRecipes = ({ recipes }) => {
 
     if (recipes.length === 0) {
         return (
-        <>
-            <div className="container">
-                <p className="has-text-centered">Sorry, there are no recipes found. Please try other criteria.</p>
-            </div>
-                <div className="mt-6 pt-6">
-            </div>
-        </>
+            <DisplayErrorMessage message={'Sorry, there are no recipes found. Please try other criteria.'} style={''}/>
         );
     }
 
