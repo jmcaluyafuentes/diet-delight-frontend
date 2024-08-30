@@ -8,10 +8,8 @@ function HeroBanner({ backgroundImage }) {
   };
 
   return (
-    <section className="hero is-fullheight" style={heroBannerStyle}>
-      <div
-        className="container"
-      >
+    <section className="hero is-fullheight" style={heroBannerStyle} id="herobanner">
+      <div className="container" id="herocontainer">
         <h1 className="title is-1">Welcome to Diet Delight</h1>
         <h2 className="subtitle is-4 mt-4 has-text-primary has-text-weight-bold">Your go-to app for healthy recipes</h2>
 
