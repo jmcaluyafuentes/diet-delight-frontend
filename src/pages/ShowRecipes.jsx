@@ -34,29 +34,40 @@ const ShowRecipes = ({ recipes }) => {
                 return (
                     <div key={recipe.instructionsUrl} className="column is-one-third-desktop is-half-tablet">
                         <div className="recipe card">
+
                             {/* Image */}
-                            <RecipeImage recipe={recipe}/>
+                            <RecipeImage 
+                                recipe={recipe} 
+                                divStyle={'card-image'}
+                                figureStyle={'image'}
+                            />
+
                             <div className="card-content">
                                 {/* Title */}
-                                <RecipeTitle recipe={recipe}/>
+                                <RecipeTitle 
+                                    recipe={recipe}
+                                    div1Style={'media'}
+                                    div2Style={'media-content'}
+                                    pStyle={'title is-4 has-text-centered'}
+                                />
 
                                 <div className="content">
                                     <h5 className="title is-5 has-text-centered">Nutrition:</h5>
                                     {/* Calories and Serving size */}
-                                    <RecipeCaloriesServing recipe={recipe}/>
+                                    <RecipeCaloriesServing recipe={recipe} />
 
                                     {/* Diet and Health labels */}
                                     <h5 className="title is-5 has-text-centered">Diet and Health Information:</h5>
-                                    <RecipeDietLabels recipe={recipe}/>
-                                    <RecipeHealthLabels recipe={recipe}/>
+                                    <RecipeDietLabels recipe={recipe} />
+                                    <RecipeHealthLabels recipe={recipe} />
 
                                     {/* Other information */}
-                                    <RecipeDishClassifications recipe={recipe}/>
-                                    <RecipeIngredients recipe={recipe}/>
-                                    <RecipePreparation recipe={recipe}/>
+                                    <RecipeDishClassifications recipe={recipe} />
+                                    <RecipeIngredients recipe={recipe} />
+                                    <RecipePreparation recipe={recipe} />
 
                                     {/* Recipe source */}
-                                    <RecipeSource recipe={recipe}/>
+                                    <RecipeSource recipe={recipe} />
                                 </div>
 
                                 {/* Button to add or remove recipe for printing */}

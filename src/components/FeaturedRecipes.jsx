@@ -1,142 +1,136 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import LoadingSpinner from './LoadingSpinner';
 import { dietOptions, healthOptions } from '../utils/dietHealthOptions.js';
+import { fetchRecipes } from '../utils/fetchRecipes.js';
+import RecipeImage from '../components/recipeProperties/RecipeImage.jsx'
+import RecipeTitle from '../components/recipeProperties/RecipeTitle.jsx'
+import RecipeCaloriesServing from './recipeProperties/RecipeCaloriesServing.jsx';
+import RecipeDietLabels from './recipeProperties/RecipeDietLabels.jsx';
+import RecipeSource from './recipeProperties/RecipeSource.jsx';
+import AddToPrintButton from './AddToPrintButton.jsx';
+import PrintToPDFButton from './PrintToPDFButton.jsx';
 import './FeaturedRecipes.css';
 
+// Utility functions outside the component to prevent recreation on every render
+// Get random element from an array as reference in featuring the recipes
 const getRandomElement = (array) => array[Math.floor(Math.random() * array.length)];
+// Shuffle the elements of an array randomly
+const shuffleArray = (array) => array.sort(() => Math.random() - 0.5);
 
 const FeaturedRecipes = () => {
     const [allRecipes, setAllRecipes] = useState([]);
     const [displayedRecipes, setDisplayedRecipes] = useState([]);
     const [selectedRecipes, setSelectedRecipes] = useState(new Set());
     const [randomDiet, setRandomDiet] = useState('');
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
     const [isShuffling, setIsShuffling] = useState(true);
-    const navigate = useNavigate();
 
-    const shuffleArray = (array) => array.sort(() => Math.random() - 0.5);
-
+    // Fetch recipes when the component mounts
     useEffect(() => {
-        const fetchRecipes = async () => {
-            setIsLoading(true); // Start loading
-
+            // Select random diet and health options to filter recipes
             const selectedDiet = getRandomElement(dietOptions);
             const randomHealth = getRandomElement(healthOptions);
-
             setRandomDiet(selectedDiet);
 
-            try {
-                const queryParams = new URLSearchParams();
-                queryParams.append('diet', selectedDiet);
-                queryParams.append('health', randomHealth);
+            // Convert selectedDiet and randomHealth to arrays for the fetch function
+            const selectedDietArray = [selectedDiet];
+            const randomHealthArray = [randomHealth];
 
-                const response = await fetch(`https://diet-delight-backend.onrender.com/recipes?${queryParams.toString()}`);
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                const data = await response.json();
-                setAllRecipes(data.recipes);
-                setDisplayedRecipes(data.recipes.slice(0, 4));
-            } catch (error) {
-                console.error('Error fetching recipes:', error);
-                setAllRecipes([]);
-                setDisplayedRecipes([]);
-            } 
-            finally {
-                setIsLoading(false); // End loading after a delay
-            }
-        };
-
-        fetchRecipes();
+            // Fetch recipes based on random diet and health options
+            fetchRecipes(selectedDietArray, randomHealthArray, setAllRecipes, setIsLoading);
     }, []);
 
+    // Set the initial set of displayed recipes after fetching
+    useEffect(() => {
+        if (allRecipes.length > 0) {
+            // Show only the first 4 recipes initially
+            setDisplayedRecipes(allRecipes.slice(0, 4));
+        }
+    }, [allRecipes]);
+
+    // Shuffle the recipes every 5 seconds and update the displayed recipes
     useEffect(() => {
         let intervalId;
         if (isShuffling) {
+            // Set up an interval to shuffle the recipes every 5 seconds
             intervalId = setInterval(() => {
                 if (allRecipes.length > 0) {
                     const shuffled = shuffleArray([...allRecipes]);
+                    // Update the displayed recipes with the shuffled selection
                     setDisplayedRecipes(shuffled.slice(0, 4));
                 }
-            }, 5000);
+            }, 5000); // 5 seconds interval
         }
 
+        // Cleanup function to clear the interval when the component unmounts or when shuffling stops
         return () => clearInterval(intervalId);
     }, [allRecipes, isShuffling]);
-
-    const handleAddToPrint = (recipeIdentifier) => {
-        setSelectedRecipes((prevSelected) => {
-            const updatedSelections = new Set(prevSelected);
-            if (updatedSelections.has(recipeIdentifier)) {
-                updatedSelections.delete(recipeIdentifier);
-            } else {
-                updatedSelections.add(recipeIdentifier);
-            }
-
-            // Toggle shuffling based on the number of selected recipes
-            setIsShuffling(updatedSelections.size === 0);
-            return updatedSelections;
-        });
-    };
-
-    const handlePrintToPDF = () => {
-        const selectedRecipeDetails = displayedRecipes.filter((recipe) =>
-            selectedRecipes.has(recipe.instructionsUrl)
-        );
-        navigate('/print', { state: { recipes: selectedRecipeDetails } });
-    };
 
     return (
         <div className="recipe-display">
             {isLoading ? (
+                // Show loading spinner while recipes are being fetched
                 <LoadingSpinner />
             ) : (
                 <>
+                    {/* Display the featured recipes title based on the random diet selected */}
                     <h2 className="title is-3 has-text-centered mt-5" id="homepagefeaturedrecipetitle">
                         Featured Recipes for a {randomDiet} Diet
                     </h2>
+
                     <div className="columns is-multiline is-centered">
+                        {/* Render each recipe in a responsive column layout */}
                         {displayedRecipes.map(recipe => (
                             <div key={recipe.instructionsUrl} className="column is-one-quarter-desktop is-half-tablet is-full-mobile">
                                 <div className="recipe card">
-                                    <div className="card-image is-flex is-justify-content-center is-align-items-center">
-                                        <figure className="image mt-3 ">
-                                            <a href={recipe.instructionsUrl} className="button ml-2" target="_blank" rel="noopener noreferrer">
-                                                <img src={recipe.image} alt={recipe.title}/>
-                                            </a>
-                                        </figure>
-                                    </div>
+
+                                    {/* Image */}
+                                    <RecipeImage 
+                                        recipe={recipe} 
+                                        divStyle={'card-image is-flex is-justify-content-center is-align-items-center'}
+                                        figureStyle={'image mt-3'}
+                                    />
+
                                     <div className="card-content">
-                                        <div className="media">
-                                            <div className="media-content is-flex is-justify-content-center is-align-items-center has-text-centered">
-                                                <p className="title is-5">{recipe.title}</p>
-                                            </div>
-                                        </div>
+                                        {/* Title */}
+                                        <RecipeTitle 
+                                            recipe={recipe} 
+                                            div1Style={'media'}
+                                            div2Style={'media-content is-flex is-justify-content-center is-align-items-center has-text-centered'}
+                                            pStyle={'title is-5'}
+                                        />
+
                                         <div className="content is-flex is-flex-direction-column is-justify-content-center is-align-items-center has-text-centered">
-                                            <p>Calories: {`${recipe.caloriesPerServing.toFixed(2)} kcal/serving`} <br />
-                                                Serving Size: {recipe.servingSize}</p>
-                                            <p><strong>Diet Labels:</strong> {recipe.dietLabels.join(', ')}</p>
-                                            <p className="mt-2 ml-4">Source: <a href={recipe.instructionsUrl} target="_blank" rel="noopener noreferrer" className="has-text-info"><em>{recipe.source}</em></a></p>
+                                            {/* Calories and Serving size */}
+                                            <RecipeCaloriesServing recipe={recipe} />
+                                            {/* Diet labels */}
+                                            <RecipeDietLabels recipe={recipe} />
+                                            {/* Recipe source */}
+                                            <RecipeSource recipe={recipe} />
                                         </div>
+
                                         <div className="has-text-centered mt-3">
-                                            <button
-                                                onClick={() => handleAddToPrint(recipe.instructionsUrl)}
-                                                className={`button is-link ${selectedRecipes.has(recipe.instructionsUrl) ? 'is-danger' : ''}`} id="btn-add-to-print"
-                                            >
-                                                {selectedRecipes.has(recipe.instructionsUrl) ? 'Remove' : 'Add to Print'}
-                                            </button>
+                                            {/* Button to add or remove recipes from the print list */}
+                                            <AddToPrintButton
+                                                recipe={recipe}
+                                                setSelectedRecipes={setSelectedRecipes}
+                                                isSelected={selectedRecipes.has(recipe.instructionsUrl)}
+                                                setIsShuffling={setIsShuffling}
+                                            />
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         ))}
                     </div>
+                    {/* Conditionally render the 'Print to PDF' button if there are selected recipes */}
                     {selectedRecipes.size > 0 && (
                         <div className="has-text-centered mt-4">
-                            <button onClick={handlePrintToPDF} className="button is-primary" id="btn-print-to-pdf">
-                                Print to PDF
-                            </button>
+                            <PrintToPDFButton
+                                recipes={displayedRecipes}
+                                selectedRecipes={selectedRecipes}
+                                isDisabled={selectedRecipes.size === 0}
+                            />
                         </div>
                     )}
                 </>

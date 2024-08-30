@@ -1,10 +1,10 @@
 import React from 'react'
 
-const RecipeTitle = ({ recipe }) => {
+const RecipeTitle = ({ recipe, div1Style, div2Style, pStyle }) => {
     return (
-    <div className="media">
-        <div className="media-content">
-            <p className="title is-4 has-text-centered">{recipe.title}</p>
+    <div className={div1Style}>
+        <div className={div2Style}>
+            <p className={pStyle}>{recipe.title}</p>
         </div>
     </div>
     )

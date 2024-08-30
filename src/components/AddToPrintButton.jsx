@@ -1,6 +1,6 @@
 import React from 'react';
 
-const AddToPrintButton = ({ recipe, setSelectedRecipes, isSelected }) => {
+const AddToPrintButton = ({ recipe, setSelectedRecipes, isSelected, setIsShuffling }) => {
 
     const handleAddToPrint = (recipeIdentifier) => {
         setSelectedRecipes((prevSelected) => {
@@ -10,6 +10,13 @@ const AddToPrintButton = ({ recipe, setSelectedRecipes, isSelected }) => {
             } else {
                 updatedSelections.add(recipeIdentifier);
             }
+
+            // Update shuffling state based on the number of selected recipes
+            // Check if setIsShuffling is provided before calling it
+            if (setIsShuffling) {
+                setIsShuffling(updatedSelections.size === 0);
+            }
+
             return updatedSelections;
         });
     };
