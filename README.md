@@ -4,15 +4,61 @@ A full stack web application by John Fuentes, Hy Nguyen and Branden Chiem.
 
 A capstone project for the Diploma of IT at Coder Academy.
 
-## R10: Deployed Website
+## R10: Deployed App
 
-Frontend: https://diet-delight.netlify.app/  
-Backend: https://diet-delight-backend.onrender.com/
+You can access the deployed App at https://diet-delight.netlify.app/
 
 ## R11: Github Repository
 
 Frontend: https://github.com/jmcaluyafuentes/diet-delight-frontend  
 Backend: https://github.com/jmcaluyafuentes/diet-delight-backend
+
+## Installation and Set Up Instructions
+
+Follow these steps to get the project up and running on your local machine.
+
+### 1. Prerequisites
+
+Make sure you have the following installed:
+
+- Node.js  
+- npm (Node Package Manager)
+
+### 2. Clone the Repository
+
+First, clone the repository to your local machine:
+
+```
+git clone https://github.com/jmcaluyafuentes/diet-delight-frontend.git
+```
+
+Navigate to the project directory:
+
+```
+cd diet-delight-frontend
+```
+
+### 3. Install Dependencies
+
+```
+npm install
+```
+
+###  4. Running the Application
+
+To start the development server, run:
+
+```
+npm run dev
+```
+
+This will start the application on http://localhost:5173/ by default.
+
+### 5. Running Tests
+
+```
+npm test
+```
 
 ## R1: Website Desciption
 
