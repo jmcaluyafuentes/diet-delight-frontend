@@ -3,8 +3,7 @@ import { dietOptions, healthOptions } from '../utils/dietHealthOptions.js';
 import ShowRecipes from './ShowRecipes.jsx';
 import CheckboxGroup from '../components/CheckboxGroup.jsx';
 import DisplayErrorMessage from '../components/DisplayErrorMessage.jsx'
-import { fetchRecipes } from '../utils/fetchRecipes.js';
-import LoadingSpinner from '../components/LoadingSpinner.jsx';
+import SearchRecipes from '../components/SearchRecipeButton.jsx'
 import './DietarySelection.css'
 
 const DietarySelection = () => {
@@ -12,7 +11,6 @@ const DietarySelection = () => {
     const [healthCriteria, setHealthCriteria] = useState([]);
     const [recipes, setRecipes] = useState([]);
     const [errorMessage, setErrorMessage] = useState('');
-    const [isLoading, setIsLoading] = useState(false);
 
     const handleCheckboxChange = (event, type) => {
         const value = event.target.value;
@@ -25,15 +23,6 @@ const DietarySelection = () => {
                 prev.includes(value) ? prev.filter(item => item !== value) : [...prev, value]
             );
         }
-    };
-
-    const handleSearch = () => {
-        if (dietCriteria.length === 0 && healthCriteria.length === 0) {
-            setErrorMessage('Please select at least one dietary or health criterion');
-            return;
-        }
-        setErrorMessage('');
-        fetchRecipes(dietCriteria, healthCriteria, setIsLoading, setRecipes);
     };
 
     return (
@@ -59,14 +48,17 @@ const DietarySelection = () => {
                         onChange={(event) => handleCheckboxChange(event, 'health')}
                     />
                 </div>
-                <div className="is-flex is-justify-content-center">
-                    <button className="button is-warning is-medium mt-5 mb-5" id="btn-search" onClick={handleSearch}>Search</button>
-                </div>
-                {isLoading ? ( // Show spinner while loading
-                    <LoadingSpinner />
-                ) : (
-                    <ShowRecipes recipes={recipes} />
-                )}
+                
+                {/* Add 'Search' button component to search recipes */}
+                <SearchRecipes 
+                    dietCriteria={dietCriteria} 
+                    healthCriteria={healthCriteria} 
+                    setErrorMessage={setErrorMessage} 
+                    setRecipes={setRecipes}
+                />
+                
+                <ShowRecipes recipes={recipes} />
+                
             </div> 
         </main>
     );
