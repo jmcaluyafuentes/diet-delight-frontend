@@ -3,6 +3,12 @@ import { useNavigate } from 'react-router-dom';
 import LoadingSpinner from './LoadingSpinner';
 import { dietOptions, healthOptions } from '../utils/dietHealthOptions.js';
 import { fetchRecipes } from '../utils/fetchRecipes.js';
+import RecipeImage from '../components/recipeProperties/RecipeImage.jsx'
+import RecipeTitle from '../components/recipeProperties/RecipeTitle.jsx'
+import RecipeCaloriesServing from './recipeProperties/RecipeCaloriesServing.jsx';
+import RecipeDietLabels from './recipeProperties/RecipeDietLabels.jsx';
+import RecipeSource from './recipeProperties/RecipeSource.jsx';
+import AddToPrintButton from './AddToPrintButton.jsx';
 import './FeaturedRecipes.css';
 
 const FeaturedRecipes = () => {
@@ -20,10 +26,6 @@ const FeaturedRecipes = () => {
     const shuffleArray = (array) => array.sort(() => Math.random() - 0.5);
 
     useEffect(() => {
-        // const fetchRecipes = async () => {
-            // Show the loading spinner while fetching the data
-            // setIsLoading(true);
-
             const selectedDiet = getRandomElement(dietOptions);
             const randomHealth = getRandomElement(healthOptions);
 
@@ -41,8 +43,6 @@ const FeaturedRecipes = () => {
             setDisplayedRecipes(allRecipes.slice(0, 4));
         }
     }, [allRecipes]);
-
-    console.log(allRecipes)
 
     // Shuffle the recipes every 5 seconds and select 4 recipes for display
     useEffect(() => {
@@ -90,29 +90,37 @@ const FeaturedRecipes = () => {
                     <h2 className="title is-3 has-text-centered mt-5" id="homepagefeaturedrecipetitle">
                         Featured Recipes for a {randomDiet} Diet
                     </h2>
+
                     <div className="columns is-multiline is-centered">
                         {displayedRecipes.map(recipe => (
                             <div key={recipe.instructionsUrl} className="column is-one-quarter-desktop is-half-tablet is-full-mobile">
                                 <div className="recipe card">
-                                    <div className="card-image is-flex is-justify-content-center is-align-items-center">
-                                        <figure className="image mt-3 ">
-                                            <a href={recipe.instructionsUrl} className="button ml-2" target="_blank" rel="noopener noreferrer">
-                                                <img src={recipe.image} alt={recipe.title}/>
-                                            </a>
-                                        </figure>
-                                    </div>
+
+                                    {/* Image */}
+                                    <RecipeImage 
+                                        recipe={recipe} 
+                                        divStyle={'card-image is-flex is-justify-content-center is-align-items-center'}
+                                        figureStyle={'image mt-3'}
+                                    />
+
                                     <div className="card-content">
-                                        <div className="media">
-                                            <div className="media-content is-flex is-justify-content-center is-align-items-center has-text-centered">
-                                                <p className="title is-5">{recipe.title}</p>
-                                            </div>
-                                        </div>
+                                        {/* Title */}
+                                        <RecipeTitle 
+                                            recipe={recipe} 
+                                            div1Style={'media'}
+                                            div2Style={'media-content is-flex is-justify-content-center is-align-items-center has-text-centered'}
+                                            pStyle={'title is-5'}
+                                        />
+
                                         <div className="content is-flex is-flex-direction-column is-justify-content-center is-align-items-center has-text-centered">
-                                            <p>Calories: {`${recipe.caloriesPerServing.toFixed(2)} kcal/serving`} <br />
-                                                Serving Size: {recipe.servingSize}</p>
-                                            <p><strong>Diet Labels:</strong> {recipe.dietLabels.join(', ')}</p>
-                                            <p className="mt-2 ml-4">Source: <a href={recipe.instructionsUrl} target="_blank" rel="noopener noreferrer" className="has-text-info"><em>{recipe.source}</em></a></p>
+                                            {/* Calories and Serving size */}
+                                            <RecipeCaloriesServing recipe={recipe} />
+                                            {/* Diet labels */}
+                                            <RecipeDietLabels recipe={recipe} />
+                                            {/* Recipe source */}
+                                            <RecipeSource recipe={recipe} />
                                         </div>
+
                                         <div className="has-text-centered mt-3">
                                             <button
                                                 onClick={() => handleAddToPrint(recipe.instructionsUrl)}
