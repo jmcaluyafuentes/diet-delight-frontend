@@ -1,23 +1,75 @@
+:root {
+    --glow-color: #ff00f7;
+    --glow-color1: rgb(0, 0, 0);
+}
+
+.no-option-selected {
+    text-shadow: 
+        0 0 5px var(--glow-color), 
+        0 0 10px var(--glow-color), 
+        0 0 15px var(--glow-color), 
+        0 0 20px var(--glow-color), 
+        0 0 25px var(--glow-color), 
+        0 0 30px var(--glow-color), 
+        0 0 35px var(--glow-color);
+    font-size: 1.2rem;
+}
+
+.no-recipe-found {
+    text-shadow: 
+        0 0 5px var(--glow-color1), 
+        0 0 10px var(--glow-color1), 
+        0 0 15px var(--glow-color1), 
+        0 0 20px var(--glow-color1), 
+        0 0 25px var(--glow-color1), 
+        0 0 30px var(--glow-color1), 
+        0 0 35px var(--glow-color1);
+}
+
 .error {
+    color: #fff;
     text-align: center;
     padding: 0.5rem;
-    font-size: 1.2rem;
     margin: 1rem auto;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     width: 50%;
     margin: 1rem auto;
+    animation: glow 1.5s infinite alternate, swing 5s infinite ease-in-out;
 }
 
-.no-option-selected {
-    color: #cb4742;
-    background-color: #f7e2e1;
-    border-radius: 30px;
+@keyframes error {
+    from {
+        text-shadow: 
+            0 0 5px var(--glow-color), 
+            0 0 10px var(--glow-color), 
+            0 0 15px var(--glow-color), 
+            0 0 20px var(--glow-color), 
+            0 0 25px var(--glow-color), 
+            0 0 30px var(--glow-color), 
+            0 0 35px var(--glow-color);
+    }
+    to {
+        text-shadow: 
+            0 0 10px var(--glow-color), 
+            0 0 20px var(--glow-color), 
+            0 0 30px var(--glow-color), 
+            0 0 40px var(--glow-color), 
+            0 0 50px var(--glow-color), 
+            0 0 60px var(--glow-color), 
+            0 0 70px var(--glow-color);
+    }
 }
 
-.no-recipe-found {
-    color: #cb4742;
-    background-color: #f7e2e1;
-    border-radius: 30px;
+@keyframes swing {
+    0% {
+        transform: translateX(-10px);
+    }
+    50% {
+        transform: translateX(10px);
+    }
+    100% {
+        transform: translateX(-10px);
+    }
 }
 
 /* Media query for tablet view */

@@ -5,7 +5,7 @@ import './SearchRecipeButton.css'
 const SearchRecipes = ({ dietCriteria, healthCriteria, setErrorMessage, setRecipes }) => {
     const handleSearch = () => {
         if (dietCriteria.length === 0 && healthCriteria.length === 0) {
-            setErrorMessage('Please select at least one dietary or health criterion')
+            setErrorMessage('Please tick at least one dietary or health criterion below')
             setRecipes([])
             return;
         }
