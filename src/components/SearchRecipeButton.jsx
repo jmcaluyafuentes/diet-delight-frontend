@@ -2,15 +2,16 @@ import React from 'react'
 import { fetchRecipes } from '../utils/fetchRecipes.js';
 import './SearchRecipeButton.css'
 
-const SearchRecipes = ({ dietCriteria, healthCriteria, setErrorMessage, setRecipes }) => {
+const SearchRecipeButton = ({ dietCriteria, healthCriteria, setErrorMessage, setRecipes, setIsSearchClicked, setIsLoading }) => {
     const handleSearch = () => {
+        setIsSearchClicked(true)
         if (dietCriteria.length === 0 && healthCriteria.length === 0) {
             setErrorMessage('Please tick at least one dietary or health criterion below')
             setRecipes([])
             return;
         }
         setErrorMessage('');
-        fetchRecipes(dietCriteria, healthCriteria, setRecipes);
+        fetchRecipes(dietCriteria, healthCriteria, setRecipes, setIsLoading);
     };
 
     return (
@@ -20,4 +21,4 @@ const SearchRecipes = ({ dietCriteria, healthCriteria, setErrorMessage, setRecip
     )
 }
 
-export default SearchRecipes
+export default SearchRecipeButton

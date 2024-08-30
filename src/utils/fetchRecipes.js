@@ -1,5 +1,6 @@
-export const fetchRecipes = async (dietCriteria, healthCriteria, setRecipes) => {
+export const fetchRecipes = async (dietCriteria, healthCriteria, setRecipes, setIsLoading) => {
     try {
+        setIsLoading(true)
         // Construct URL with query parameters
         const queryParams = new URLSearchParams();
 
@@ -24,5 +25,7 @@ export const fetchRecipes = async (dietCriteria, healthCriteria, setRecipes) => 
         console.error('Error fetching recipes:', error);
         // Update the state with an empty array in case of an error
         setRecipes([]);
+    } finally {
+        setIsLoading(false)
     }
 };

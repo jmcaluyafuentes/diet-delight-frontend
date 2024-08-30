@@ -3,7 +3,8 @@ import { dietOptions, healthOptions } from '../utils/dietHealthOptions.js';
 import ShowRecipes from './ShowRecipes.jsx';
 import CheckboxGroup from '../components/CheckboxGroup.jsx';
 import DisplayErrorMessage from '../components/DisplayErrorMessage.jsx'
-import SearchRecipes from '../components/SearchRecipeButton.jsx'
+import SearchRecipeButton from '../components/SearchRecipeButton.jsx'
+import LoadingSpinner from '../components/LoadingSpinner.jsx';
 import './DietarySelection.css'
 
 const DietarySelection = () => {
@@ -11,6 +12,8 @@ const DietarySelection = () => {
     const [healthCriteria, setHealthCriteria] = useState([]);
     const [recipes, setRecipes] = useState([]);
     const [errorMessage, setErrorMessage] = useState('');
+    const [isSearchClicked, setIsSearchClicked] = useState(false);
+    const [isLoading, setIsLoading] = useState(false)
 
     const handleCheckboxChange = (event, type) => {
         const value = event.target.value;
@@ -49,16 +52,26 @@ const DietarySelection = () => {
                     />
                 </div>
                 
-                {/* Add 'Search' button component to search recipes */}
-                <SearchRecipes 
+                {/* Add search button with its functionality */}
+                <SearchRecipeButton 
                     dietCriteria={dietCriteria} 
                     healthCriteria={healthCriteria} 
                     setErrorMessage={setErrorMessage} 
                     setRecipes={setRecipes}
+                    setIsSearchClicked={setIsSearchClicked}
+                    setIsLoading={setIsLoading}
                 />
                 
-                <ShowRecipes recipes={recipes} />
-                
+                {/* Display the results after search button is clicked */}
+                {isSearchClicked && (
+                    // Display the loading spinner while waiting for the fetched data
+                    isLoading ? (
+                        <LoadingSpinner />
+                    ) : (
+                    // Display the recipes once available
+                    <ShowRecipes recipes={recipes} />
+                    )
+                )}
             </div> 
         </main>
     );
