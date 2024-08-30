@@ -17,6 +17,7 @@ import './ShowRecipes.css'
 const ShowRecipes = ({ recipes }) => {
     const [selectedRecipes, setSelectedRecipes] = useState(new Set());
 
+    // If there are no recipes available, display an error message
     if (recipes.length === 0) {
         return (
             <DisplayErrorMessage 
@@ -33,24 +34,32 @@ const ShowRecipes = ({ recipes }) => {
                 return (
                     <div key={recipe.instructionsUrl} className="column is-one-third-desktop is-half-tablet">
                         <div className="recipe card">
+                            {/* Image */}
                             <RecipeImage recipe={recipe}/>
                             <div className="card-content">
+                                {/* Title */}
                                 <RecipeTitle recipe={recipe}/>
 
                                 <div className="content">
                                     <h5 className="title is-5 has-text-centered">Nutrition:</h5>
+                                    {/* Calories and Serving size */}
                                     <RecipeCaloriesServing recipe={recipe}/>
 
+                                    {/* Diet and Health labels */}
                                     <h5 className="title is-5 has-text-centered">Diet and Health Information:</h5>
                                     <RecipeDietLabels recipe={recipe}/>
                                     <RecipeHealthLabels recipe={recipe}/>
 
+                                    {/* Other information */}
                                     <RecipeDishClassifications recipe={recipe}/>
                                     <RecipeIngredients recipe={recipe}/>
                                     <RecipePreparation recipe={recipe}/>
+
+                                    {/* Recipe source */}
                                     <RecipeSource recipe={recipe}/>
                                 </div>
 
+                                {/* Button to add or remove recipe for printing */}
                                 <div className="has-text-centered mt-3">
                                     <AddToPrintButton
                                         recipe={recipe}
@@ -66,6 +75,7 @@ const ShowRecipes = ({ recipes }) => {
             })}
             </div>
 
+            {/* Button to print PDF */}
             <div className="has-text-centered mb-4">
                 <PrintToPDFButton
                     recipes={recipes}
@@ -74,6 +84,7 @@ const ShowRecipes = ({ recipes }) => {
                 />  
                 <br />
 
+                {/* Button that will scroll the page to the top */}
                 <ButtonReturnToTop />
             </div>
         </div>
