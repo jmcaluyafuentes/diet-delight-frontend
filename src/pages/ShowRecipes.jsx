@@ -7,22 +7,17 @@ import './ShowRecipes.css'
 const ShowRecipes = ({ recipes }) => {
     const [selectedRecipes, setSelectedRecipes] = useState(new Set());
 
-    const handleAddToPrint = (recipeIdentifier) => {
-        if (recipeIdentifier == null) {
-            console.error("Recipe identifier is undefined or null");
-            return;
-        }
-
-        setSelectedRecipes((prevSelected) => {
-            const updatedSelections = new Set(prevSelected);
-            if (updatedSelections.has(recipeIdentifier)) {
-                updatedSelections.delete(recipeIdentifier);
-            } else {
-                updatedSelections.add(recipeIdentifier);
-            }
-            return updatedSelections;
-        });
-    };
+    // const handleAddToPrint = (recipeIdentifier) => {
+    //     setSelectedRecipes((prevSelected) => {
+    //         const updatedSelections = new Set(prevSelected);
+    //         if (updatedSelections.has(recipeIdentifier)) {
+    //             updatedSelections.delete(recipeIdentifier);
+    //         } else {
+    //             updatedSelections.add(recipeIdentifier);
+    //         }
+    //         return updatedSelections;
+    //     });
+    // };
 
     const scrollToTop = () => {
         window.scrollTo({
@@ -104,8 +99,10 @@ const ShowRecipes = ({ recipes }) => {
 
                             <div className="has-text-centered mt-3">
                                 <AddToPrintButton
+                                    recipe={recipe}
+                                    setSelectedRecipes={setSelectedRecipes}
                                     isSelected={selectedRecipes.has(recipe.instructionsUrl)}
-                                    onClick={() => handleAddToPrint(recipe.instructionsUrl)}
+                                    // onClick={() => handleAddToPrint(recipe.instructionsUrl)}
                                 />
                             </div>
                             
