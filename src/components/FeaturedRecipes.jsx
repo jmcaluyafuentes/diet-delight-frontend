@@ -2,55 +2,49 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import LoadingSpinner from './LoadingSpinner';
 import { dietOptions, healthOptions } from '../utils/dietHealthOptions.js';
+import { fetchRecipes } from '../utils/fetchRecipes.js';
 import './FeaturedRecipes.css';
-
-const getRandomElement = (array) => array[Math.floor(Math.random() * array.length)];
 
 const FeaturedRecipes = () => {
     const [allRecipes, setAllRecipes] = useState([]);
     const [displayedRecipes, setDisplayedRecipes] = useState([]);
     const [selectedRecipes, setSelectedRecipes] = useState(new Set());
     const [randomDiet, setRandomDiet] = useState('');
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
     const [isShuffling, setIsShuffling] = useState(true);
     const navigate = useNavigate();
 
+    // Get random element as reference in featuring the recipes
+    const getRandomElement = (array) => array[Math.floor(Math.random() * array.length)];
+    // Shuffle the array
     const shuffleArray = (array) => array.sort(() => Math.random() - 0.5);
 
     useEffect(() => {
-        const fetchRecipes = async () => {
-            setIsLoading(true); // Start loading
+        // const fetchRecipes = async () => {
+            // Show the loading spinner while fetching the data
+            // setIsLoading(true);
 
             const selectedDiet = getRandomElement(dietOptions);
             const randomHealth = getRandomElement(healthOptions);
 
             setRandomDiet(selectedDiet);
 
-            try {
-                const queryParams = new URLSearchParams();
-                queryParams.append('diet', selectedDiet);
-                queryParams.append('health', randomHealth);
+            // Convert selectedDiet and randomHealth to arrays
+            const selectedDietArray = [selectedDiet];
+            const randomHealthArray = [randomHealth];
 
-                const response = await fetch(`https://diet-delight-backend.onrender.com/recipes?${queryParams.toString()}`);
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                const data = await response.json();
-                setAllRecipes(data.recipes);
-                setDisplayedRecipes(data.recipes.slice(0, 4));
-            } catch (error) {
-                console.error('Error fetching recipes:', error);
-                setAllRecipes([]);
-                setDisplayedRecipes([]);
-            } 
-            finally {
-                setIsLoading(false); // End loading after a delay
-            }
-        };
-
-        fetchRecipes();
+            fetchRecipes(selectedDietArray, randomHealthArray, setAllRecipes, setIsLoading);
     }, []);
 
+    useEffect(() => {
+        if (allRecipes.length > 0) {
+            setDisplayedRecipes(allRecipes.slice(0, 4));
+        }
+    }, [allRecipes]);
+
+    console.log(allRecipes)
+
+    // Shuffle the recipes every 5 seconds and select 4 recipes for display
     useEffect(() => {
         let intervalId;
         if (isShuffling) {
@@ -59,7 +53,7 @@ const FeaturedRecipes = () => {
                     const shuffled = shuffleArray([...allRecipes]);
                     setDisplayedRecipes(shuffled.slice(0, 4));
                 }
-            }, 5000);
+            }, 5000); // 5 seconds
         }
 
         return () => clearInterval(intervalId);
