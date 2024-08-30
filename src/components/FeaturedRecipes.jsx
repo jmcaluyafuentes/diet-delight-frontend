@@ -9,6 +9,7 @@ import RecipeCaloriesServing from './recipeProperties/RecipeCaloriesServing.jsx'
 import RecipeDietLabels from './recipeProperties/RecipeDietLabels.jsx';
 import RecipeSource from './recipeProperties/RecipeSource.jsx';
 import AddToPrintButton from './AddToPrintButton.jsx';
+import PrintToPDFButton from './PrintToPDFButton.jsx';
 import './FeaturedRecipes.css';
 
 const FeaturedRecipes = () => {
@@ -58,28 +59,6 @@ const FeaturedRecipes = () => {
 
         return () => clearInterval(intervalId);
     }, [allRecipes, isShuffling]);
-
-    const handleAddToPrint = (recipeIdentifier) => {
-        setSelectedRecipes((prevSelected) => {
-            const updatedSelections = new Set(prevSelected);
-            if (updatedSelections.has(recipeIdentifier)) {
-                updatedSelections.delete(recipeIdentifier);
-            } else {
-                updatedSelections.add(recipeIdentifier);
-            }
-
-            // Toggle shuffling based on the number of selected recipes
-            setIsShuffling(updatedSelections.size === 0);
-            return updatedSelections;
-        });
-    };
-
-    const handlePrintToPDF = () => {
-        const selectedRecipeDetails = displayedRecipes.filter((recipe) =>
-            selectedRecipes.has(recipe.instructionsUrl)
-        );
-        navigate('/print', { state: { recipes: selectedRecipeDetails } });
-    };
 
     return (
         <div className="recipe-display">
@@ -137,9 +116,11 @@ const FeaturedRecipes = () => {
                     </div>
                     {selectedRecipes.size > 0 && (
                         <div className="has-text-centered mt-4">
-                            <button onClick={handlePrintToPDF} className="button is-primary" id="btn-print-to-pdf">
-                                Print to PDF
-                            </button>
+                            <PrintToPDFButton
+                                recipes={displayedRecipes}
+                                selectedRecipes={selectedRecipes}
+                                isDisabled={selectedRecipes.size === 0}
+                            />
                         </div>
                     )}
                 </>
