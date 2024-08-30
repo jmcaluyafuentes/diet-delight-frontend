@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import DisplayErrorMessage from '../components/DisplayErrorMessage';
 import AddToPrintButton from '../components/AddToPrintButton';
+import PrintToPDFButton from '../components/PrintToPDFButton';
 import './ShowRecipes.css'
 
 const ShowRecipes = ({ recipes }) => {
     const [selectedRecipes, setSelectedRecipes] = useState(new Set());
-    const navigate = useNavigate();
 
     const handleAddToPrint = (recipeIdentifier) => {
         if (recipeIdentifier == null) {
@@ -23,13 +22,6 @@ const ShowRecipes = ({ recipes }) => {
             }
             return updatedSelections;
         });
-    };
-
-    const handlePrintToPDF = () => {
-        const selectedRecipeDetails = recipes.filter((recipe) =>
-            selectedRecipes.has(recipe.instructionsUrl) // Use unique property
-        );
-        navigate('/print', { state: { recipes: selectedRecipeDetails } });
     };
 
     const scrollToTop = () => {
@@ -125,17 +117,15 @@ const ShowRecipes = ({ recipes }) => {
             </div>
 
             <div className="has-text-centered mb-4">
-            <button
-                onClick={handlePrintToPDF}
-                className="button is-primary mt-5 mb-5 is-medium"
-                disabled={selectedRecipes.size === 0}
-                id="btn-print-to-pdf"
-            >
-                Print to PDF
-            </button>
-            <br />
+                <PrintToPDFButton
+                    recipes={recipes}
+                    selectedRecipes={selectedRecipes}
+                    isDisabled={selectedRecipes.size === 0}
+                />  
+                <br />
             <button onClick={scrollToTop} className="button is-link mt-5 is-medium">Return to Top</button>
             </div>
+
         </div>
     );
 };
