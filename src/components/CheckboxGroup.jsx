@@ -14,12 +14,11 @@ const CheckboxGroup = ({ title, options, selectedOptions, onChange }) => {
                 <label className="checkbox mr-2" key={option}>
                     <input
                         type="checkbox"
-                        value={` ${option}`}
+                        value={option}
                         checked={selectedOptions.includes(option)}
                         onChange={(e) => onChange(e, type)}
                     />
-                    <span style={{ marginLeft: '8px' }}>{option}</span> 
-                    {option}
+                    <span style={{ marginLeft: '4px' }}>{option}</span> 
                 </label>
             ))}
         </div>
