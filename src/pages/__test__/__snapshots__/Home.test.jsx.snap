@@ -1,0 +1,25 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Home Component > should match the snapshot 1`] = `
+<DocumentFragment>
+  <section
+    class="hero is-fullheight"
+  >
+    <div
+      id="hero-body"
+    >
+      <div>
+        HeroBanner Component
+      </div>
+    </div>
+    <div
+      class="featured-recipes"
+      id="featuredrecipes"
+    >
+      <div>
+        FeaturedRecipes Component
+      </div>
+    </div>
+  </section>
+</DocumentFragment>
+`;
