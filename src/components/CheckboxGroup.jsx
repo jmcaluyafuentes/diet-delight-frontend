@@ -18,7 +18,7 @@ const CheckboxGroup = ({ title, options, selectedOptions, onChange }) => {
                         checked={selectedOptions.includes(option)}
                         onChange={(e) => onChange(e, type)}
                     />
-                    <span style={{ marginLeft: '2px' }}>{option}</span> 
+                    <span style={{ marginLeft: '3px' }}>{option}</span> 
                 </label>
             ))}
         </div>
