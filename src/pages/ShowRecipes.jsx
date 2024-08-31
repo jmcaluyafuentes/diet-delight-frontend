@@ -35,7 +35,7 @@ const ShowRecipes = ({ recipes }) => {
                     <div key={recipe.instructionsUrl} className="column is-one-third-desktop is-half-tablet">
                         <div className="recipe card">
 
-                            {/* Image */}
+                            {/* Recipe Image */}
                             <RecipeImage 
                                 recipe={recipe} 
                                 divStyle={'card-image'}
@@ -43,7 +43,7 @@ const ShowRecipes = ({ recipes }) => {
                             />
 
                             <div className="card-content">
-                                {/* Title */}
+                                {/* Recipe Title */}
                                 <RecipeTitle 
                                     recipe={recipe}
                                     div1Style={'media'}
@@ -52,8 +52,8 @@ const ShowRecipes = ({ recipes }) => {
                                 />
 
                                 <div className="content">
+                                    {/* Nutrition Information */}
                                     <h5 className="title is-5 has-text-centered">Nutrition:</h5>
-                                    {/* Calories and Serving size */}
                                     <RecipeCaloriesServing recipe={recipe} />
 
                                     {/* Diet and Health labels */}
@@ -61,7 +61,7 @@ const ShowRecipes = ({ recipes }) => {
                                     <RecipeDietLabels recipe={recipe} />
                                     <RecipeHealthLabels recipe={recipe} />
 
-                                    {/* Other information */}
+                                    {/* Additional Recipe Information */}
                                     <RecipeDishClassifications recipe={recipe} />
                                     <RecipeIngredients recipe={recipe} />
                                     <RecipePreparation recipe={recipe} />
@@ -70,7 +70,7 @@ const ShowRecipes = ({ recipes }) => {
                                     <RecipeSource recipe={recipe} />
                                 </div>
 
-                                {/* Button to add or remove recipe for printing */}
+                                {/* Button to add or remove the recipe from print selection */}
                                 <div className="has-text-centered mt-3">
                                     <AddToPrintButton
                                         recipe={recipe}
@@ -86,7 +86,7 @@ const ShowRecipes = ({ recipes }) => {
             })}
             </div>
 
-            {/* Button to print PDF */}
+            {/* Button to print selected recipes as a PDF */}
             <div className="has-text-centered mb-4">
                 <PrintToPDFButton
                     recipes={recipes}
@@ -95,7 +95,7 @@ const ShowRecipes = ({ recipes }) => {
                 />  
                 <br />
 
-                {/* Button that will scroll the page to the top */}
+                {/* Button to scroll the page back to the top */}
                 <ButtonReturnToTop />
             </div>
         </div>

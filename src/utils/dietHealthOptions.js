@@ -1,3 +1,4 @@
+// Array of available dietary options for recipe filtering
 export const dietOptions = [
     'Balanced', 
     'High-Fiber', 
@@ -7,6 +8,7 @@ export const dietOptions = [
     'Low-Sodium'
 ];
 
+// Array of available health options for recipe filtering
 export const healthOptions = [
     'Dairy-Free', 
     'Egg-Free', 

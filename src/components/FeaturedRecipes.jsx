@@ -11,10 +11,10 @@ import AddToPrintButton from './AddToPrintButton.jsx';
 import PrintToPDFButton from './PrintToPDFButton.jsx';
 import './FeaturedRecipes.css';
 
-// Utility functions outside the component to prevent recreation on every render
-// Get random element from an array as reference in featuring the recipes
+// Utility function to get a random element from an array
 const getRandomElement = (array) => array[Math.floor(Math.random() * array.length)];
-// Shuffle the elements of an array randomly
+
+// Utility function to shuffle the elements of an array randomly
 const shuffleArray = (array) => array.sort(() => Math.random() - 0.5);
 
 const FeaturedRecipes = () => {
@@ -84,7 +84,7 @@ const FeaturedRecipes = () => {
                             <div key={recipe.instructionsUrl} className="column is-one-quarter-desktop is-half-tablet is-full-mobile">
                                 <div className="recipe card">
 
-                                    {/* Image */}
+                                    {/* Recipe Image */}
                                     <RecipeImage 
                                         recipe={recipe} 
                                         divStyle={'card-image is-flex is-justify-content-center is-align-items-center'}
@@ -92,7 +92,7 @@ const FeaturedRecipes = () => {
                                     />
 
                                     <div className="card-content">
-                                        {/* Title */}
+                                        {/* Recipe Title */}
                                         <RecipeTitle 
                                             recipe={recipe} 
                                             div1Style={'media'}

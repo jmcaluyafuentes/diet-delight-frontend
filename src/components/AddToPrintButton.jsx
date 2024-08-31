@@ -2,9 +2,12 @@ import React from 'react';
 
 const AddToPrintButton = ({ recipe, setSelectedRecipes, isSelected, setIsShuffling }) => {
 
+    // Function to handle adding or removing a recipe from the print selection
     const handleAddToPrint = (recipeIdentifier) => {
         setSelectedRecipes((prevSelected) => {
             const updatedSelections = new Set(prevSelected);
+
+            // Toggle the recipe's selection status
             if (updatedSelections.has(recipeIdentifier)) {
                 updatedSelections.delete(recipeIdentifier);
             } else {
@@ -26,7 +29,7 @@ const AddToPrintButton = ({ recipe, setSelectedRecipes, isSelected, setIsShuffli
             onClick={() => handleAddToPrint(recipe.instructionsUrl)}
             className={`button is-link ${isSelected ? 'is-danger' : ''}`}
             id="btn-add-to-print"
-            >
+        >
             {isSelected ? 'Remove' : 'Add to Print'}
         </button>
     );
