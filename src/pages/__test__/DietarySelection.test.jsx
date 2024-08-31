@@ -1,8 +1,7 @@
 import '@testing-library/jest-dom';
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, expect, test, vi } from 'vitest';
 import DietarySelection from '../DietarySelection.jsx';
-import userEvent from '@testing-library/user-event';
 
 // Mock components and functions used in DietarySelection
 // Mocking CheckboxGroup component

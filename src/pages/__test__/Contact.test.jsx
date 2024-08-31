@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import '@testing-library/jest-dom'; // for the 'toBeInTheDocument' matcher
+import '@testing-library/jest-dom';
 import Contact from '../Contact';
 
 describe('Contact Component', () => {
