@@ -25,4 +25,5 @@ const CheckboxGroup = ({ title, options, selectedOptions, onChange }) => {
     );
 };
 
+
 export default CheckboxGroup;
