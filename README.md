@@ -154,6 +154,8 @@ The backend communicates with the Edamam API to fetch recipe data when users sea
 
 The backend temporarily saves recipe data retrieved from the third-party Edamam API in the database. This approach is useful to allow for quick access without repeatedly querying the external API. To comply with Edamam’s policy against permanent storage of recipe data, we use MongoDB’s Time-To-Live (TTL) feature to automatically delete the data after 10 minutes.
 
+![Database TTL](docs/Database-TTL-min.png)
+
 ## R4: User Stories
 
 ### Dietary Category Search
