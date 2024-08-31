@@ -1,7 +1,8 @@
 export const fetchRecipes = async (dietCriteria, healthCriteria, setRecipes, setIsLoading) => {
     try {
+        // Show the loading spinner by setting its state to true
         setIsLoading(true)
-        // Construct URL with query parameters
+        // Create URLSearchParams object to build query string
         const queryParams = new URLSearchParams();
 
         // Append dietary criteria to query parameters
@@ -18,14 +19,15 @@ export const fetchRecipes = async (dietCriteria, healthCriteria, setRecipes, set
         }
 
         const data = await response.json();
-        // Update the state with the fetched recipes
+        // Update recipes state with fetched data
         setRecipes(data.recipes);
 
     } catch (error) {
         console.error('Error fetching recipes:', error);
-        // Update the state with an empty array in case of an error
+        // Set recipes state to an empty array if there's an error
         setRecipes([]);
     } finally {
+        // Set loading spinner state to false regardless of the outcome
         setIsLoading(false)
     }
 };

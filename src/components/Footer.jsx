@@ -5,6 +5,7 @@ const Footer = () => {
     <div className="hero-foot mb-4">
       <div className="container">
           <div className="content has-text-centered">
+              {/* Footer content with a brief description of the app */}
               <p>
                   <strong>Diet Delight</strong> is a recipe app tailored for your dietary needs. Discover and enjoy healthy recipes.
               </p>
