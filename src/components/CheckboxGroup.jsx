@@ -14,7 +14,7 @@ const CheckboxGroup = ({ title, options, selectedOptions, onChange }) => {
                 <label className="checkbox mr-2" key={option}>
                     <input
                         type="checkbox"
-                        value={option}
+                        value={` ${option}`}
                         checked={selectedOptions.includes(option)}
                         onChange={(e) => onChange(e, type)}
                     />
@@ -24,6 +24,5 @@ const CheckboxGroup = ({ title, options, selectedOptions, onChange }) => {
         </div>
     );
 };
-
 
 export default CheckboxGroup;
