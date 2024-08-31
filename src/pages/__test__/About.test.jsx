@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 import { MemoryRouter, Routes, Route } from 'react-router-dom';
 import About from '../About.jsx';
 import user from '@testing-library/user-event';
-import { vi } from 'vitest';  // Use 'vi' from 'vitest'
+import { vi } from 'vitest';
 
 describe('About Component', () => {
   it('shows the title and description correctly', () => {
