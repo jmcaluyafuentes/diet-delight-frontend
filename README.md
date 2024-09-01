@@ -96,43 +96,73 @@ While Stretch 1 (User Management) and Stretch 2 (Save Recipes) have not yet been
 
 ### Frontend:
 
-- HTML - Used for structuring the content and layout of web pages.
-- React.js -  A JavaScript library for building interactive user interfaces.
-- Vite - A build tool and development server for fast frontend development.
-- Bulma - A CSS framework for styling the frontend.
-- Netlify - The platform used for deploying the frontend.
+- HTML - The foundational markup language used to structure content on the web. HTML (HyperText Markup Language) defines elements such as headings, paragraphs, links, and other components that form the content of web pages.
+
+- Vite - A modern build tool that offers a fast development server and optimized builds for production. Vite is designed to work seamlessly with JavaScript frameworks and libraries, such as React. It provides features like hot module replacement (HMR) and efficient bundling.
+
+- @vitejs/plugin-react-swc - A Vite plugin that integrates the SWC compiler for React. It offers a faster alternative to Babel for transpiling React code, it improves build performance and reducing compile times.
+
+- React.js - A popular JavaScript library developed by Facebook for building user interfaces. React allows developers to create reusable UI components and manage the state and lifecycle of these components efficiently. It uses a virtual DOM to optimize rendering and improve performance.
+
+- React-DOM - A package that provides DOM-specific methods for React, allowing React to interact with the DOM. It works alongside React to render React components to the web page and manage updates.
+
+- React-Router-Dom - A library for handling routing in React applications. It enables navigation between different views or pages in a single-page application (SPA) without reloading the entire page. It provides components like `<BrowserRouter>`, `<Route>`, and `<Link>` to manage routing and navigation.
+
+- Bulma - A CSS framework based on Flexbox that helps in designing responsive and modern user interfaces. Bulma provides a set of ready-to-use CSS classes for layout, forms, buttons, and other UI components, making it easier to create aesthetically pleasing designs without writing extensive custom CSS.
+
+- Netlify - A platform for deploying and hosting static sites and serverless functions. Netlify integrates with Git repositories to provide continuous deployment, automated builds, and easy management of frontend assets. It also offers features like form handling and serverless functions.
 
 ### Backend:
 
-- Node.js - A JavaScript runtime environment for server-side development.
-- Express.js - A web application framework for building APIs.
-- Mongoose - An ODM (Object Data Modeling) library for MongoDB, used to interact with the database.
-- Render - The platform used for deploying the backend.
+- Node.js - A JavaScript runtime for server-side development that enables the use of JavaScript for backend applications with a non-blocking, event-driven architecture.
+
+- Express.js - A lightweight web framework for Node.js that simplifies API and web application development with features like routing and middleware support.
+
+- Mongoose - An ODM (Object Data Modeling) library for MongoDB that provides a schema-based solution for data modeling and management, simplifying database interactions.
+
+- Render - A cloud platform for deploying and managing web applications, offering features like automatic deployments, scaling, and monitoring.
 
 ### Database:
 
-- MongoDB Atlas - A cloud-based NoSQL database service used for storing recipe information.
+- MongoDB Atlas - A cloud-based NoSQL database service for scalable and flexible data storage, used to manage recipe information.
 
 ### API Integration:
 
-- Edamam API - Provides access to a wide range of recipes and nutritional data.
+- Edamam API - An API service provider that offers extensive recipe and nutritional data, which enables integration of diverse recipe information into the application.
 
 ### Testing:
 
-- Vitest - A fast unit test framework for Vite.
-- Testing Library - For testing React components.
-- Jest - A JavaScript testing framework for backend testing.
-- Supertest - For testing HTTP assertions in the backend.
+### Frontend test libraries
+
+- Vitest - A fast unit test framework designed to work with Vite. It provides a testing environment similar to Jest but optimized for Vite’s ecosystem.
+
+- @testing-library/react - A testing library for React that encourages testing components in a way that simulates user interactions. It helps ensure that components work as expected from a user’s perspective.
+
+- @testing-library/jest-dom - Provides custom matchers for Jest to test DOM nodes. It extends Jest’s default matchers with additional assertions for testing DOM elements, such as `toBeInTheDocument()`.
+
+- @testing-library/user-event - A library for simulating user interactions in tests. It provides methods to simulate events like clicks, typing, and more, helping to test how components respond to user actions.
+
+- @types/react-dom - TypeScript type definitions for React-DOM. It provides types for React-DOM methods and properties, improving type safety in React applications.
+
+- jsdom - A JavaScript implementation of the DOM and HTML standards. It allows running tests that require a DOM environment, such as those using React, in a Node.js environment.
+
+## Backend test libraries
+
+- Jest - Provides a powerful and flexible framework for running tests and assertions in Node.js applications. It supports a wide range of testing scenarios and is highly configurable.
+
+- Supertest - Used for testing HTTP endpoints, making it easier to verify that your backend API is functioning correctly and returning the expected results.
 
 ### Version Control and Collaboration:
 
-- Git - Version control system for tracking changes in the codebase.
-- GitHub - Platform for repository management, collaboration and code reviews.
+- Git - A version control system that tracks code changes and manage project history.
+
+- GitHub - A platform that host repositories, facilitates collaboration, and performs code reviews.
 
 ### Design and Project Management:
 
-- Figma - For UI/UX design and prototyping.
-- Trello - For project management, tracking tasks, and collaboration.
+- Figma - A tool used to design user interfaces and creates interactive prototypes.
+
+- Trello - A project management tool used to organize tasks, tracks progress, and collaborates with team members.
 
 ## R2: Dataflow Diagram
 
@@ -271,7 +301,7 @@ During the implementation stage, our team focused on turning the initial plans i
 
 ### Introduction
 
-This provides a summary of the production testing conducted for the Diet Delight App, aimed to evalluate usability, functionality, and performance to ensure the app meets user needs and Fit Life Gym's requirements.
+This provides a summary of the production testing conducted for the Diet Delight App, aimed to evaluate usability, functionality, and performance to ensure the app meets user needs and Fit Life Gym's requirements.
 
 ### Testing Results
 
@@ -328,7 +358,7 @@ This provides a summary of the production testing conducted for the Diet Delight
 
 The Diet Delight App meets core objectives but requires optimization for enhanced user experience, especially on mobile devices. The development team will focus on performance improvements and expanding the app’s features in future updates.
 
-## Images of the App
+## Screenshots from Production Testing
 
 ### Landing page (Home)
 
@@ -365,3 +395,17 @@ The PDF file generated and downloaded from the app.
 ![App](./docs/app-6-featured-recipes-section-min.png)
 
 The section on the home page highlighting featured recipes, with dynamic shuffling and options to view recipe details.
+
+## Error Handling in the App
+
+### Error Message: No Criteria Selected
+
+![App](./docs/app-7-error-no-criteria-selected-min.png)
+
+Displayed when the user clicks the search button without selecting any dietary criteria. This error prompts the user to specify their dietary preferences before proceeding.
+
+### Error Message: No Recipes Found
+
+![App](./docs/app-8-error-no-recipes-found-min.png)
+
+Displayed when the app cannot find any recipes matching the selected criteria. This error encourages the user to modify their search criteria for better results.
