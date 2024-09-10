@@ -11,15 +11,17 @@ import './App.css';
 
 const App = () => {
     return (
-        <div>
+        <div id="whole-page">
             <NavBar />
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/search" element={<DietarySelection />} />
-                <Route path="/print" element={<PrintPreview />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/contact" element={<Contact />} />
-            </Routes>
+            <div id="page">
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/search" element={<DietarySelection />} />
+                    <Route path="/print" element={<PrintPreview />} />
+                    <Route path="/about" element={<About />} />
+                    <Route path="/contact" element={<Contact />} />
+                </Routes>
+            </div>
             <Footer />
         </div>
     );
