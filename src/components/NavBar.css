@@ -8,6 +8,12 @@
     background-color: #00d1b2;
 }
 
+nav.navbar {
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+}
 
 .navbar-item:hover {
     background-color: #ffdd57;
