@@ -1,1 +1,23 @@
 @import "https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, .box, .card {
+    background-color: hsl(221, 14%, 9%);
+}
+
+body, .subtitle, .box {
+    color: hsl(221deg, 14%, 71%);
+}
+
+.title, .content, .content h5, strong {
+    color: hsl(221deg, 14%, 93%);
+}
+
+.box, .card {
+    box-shadow: 0 0.5em 1em -0.125em hsla(0deg, 0%, 100%,0.1),0 0px 0 1px hsla(0deg, 0%, 100%,0.02);
+}
