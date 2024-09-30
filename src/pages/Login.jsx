@@ -4,10 +4,10 @@ import Register from './Register'
 
 const Login = () => {
     return (
-        <div>
+        <main className="section">
             Login
             <Link to="/register">Register</Link>
-        </div>
+        </main>
     )
 }
 

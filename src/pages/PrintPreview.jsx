@@ -40,7 +40,7 @@ const PrintPreview = () => {
   };
 
   return (
-    <div className="print-preview-container">
+    <div className="section print-preview-container">
       <div className="print-preview-header">
         {/* Button to download the PDF */}
         <button onClick={handlePrint} className="button is-primary" id="btn-download">Download PDF</button>

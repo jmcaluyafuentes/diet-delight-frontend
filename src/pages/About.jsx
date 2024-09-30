@@ -38,7 +38,7 @@ const About = () => {
                     </div>
                 </div>
                 {/* Closing statement */}
-                <div className="mb-5">
+                <div>
                     <p className="has-text-centered">With these tools, Fit Life Gym is committed to supporting your health and fitness, both inside and outside the gym.</p>
                 </div>
             </div>

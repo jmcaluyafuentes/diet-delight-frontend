@@ -78,7 +78,7 @@ const NavBar = () => {
                         to="/search" 
                         className={`navbar-item has-text-black`}
                     >
-                        Search Recipe
+                        Recipes
                     </Link>
                     <Link 
                         to="/about" 

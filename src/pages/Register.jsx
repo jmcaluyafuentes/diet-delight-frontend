@@ -4,6 +4,7 @@ import './Register.css'
 const Register = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [registerStatus, setRegisterStatus] = useState('');
     const [message, setMessage] = useState('');
 
     const handleSubmit = async (e) => {
@@ -26,16 +27,18 @@ const Register = () => {
             const result = await response.json();
             
             if (!response.ok) {
-                throw new Error (`Registration failed. ${result.message}.`);
+                throw new Error ('Registration failed.', result);
             }
 
-            setMessage(`Registration successful. New user: '${result.username}'`)
+            setRegisterStatus('Registration successful.')
+            setMessage(`New user: '${result.username}'`)
             setUsername('');
             setPassword('');
 
         } catch (error) {
             console.error(error.message);
-            setMessage(error.message);
+            setRegisterStatus(error.message);
+            setMessage(`Username '${username}' already exist.`);
         }
     };
 
@@ -46,6 +49,7 @@ const Register = () => {
                     <h2 className="title is-2 has-text-centered">Register</h2>
                     <div>
                         <label htmlFor="username">Username: </label>
+                        <br/>
                         <input 
                             type="text" 
                             id="username" 
@@ -56,18 +60,19 @@ const Register = () => {
                     </div>
                     <div>
                         <label htmlFor="password">Password: </label>
+                        <br/>
                         <input 
                             type="password" 
                             id="password" 
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             required
-                            className="mt-2"
                         />
                     </div>
-                    <button type="submit" className="button is-warning is-normal mt-5 mb-5">Register</button>
+                    <button type="submit" className="button is-warning is-normal mt-5">Register</button>
                 </form>
-                <div>{message}</div>
+                {registerStatus && <p>{registerStatus}</p>}
+                {message && <p>{message}</p>}
             </div>
         </main>
     )
