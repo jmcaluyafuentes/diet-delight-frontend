@@ -92,6 +92,12 @@ const NavBar = () => {
                     >
                         Contact
                     </Link>
+                    <Link
+                        to="/login"
+                        className={`navbar-item has-text-black`}
+                    >
+                        Login
+                    </Link>
                 </div>
             </div>
         </nav>

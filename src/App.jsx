@@ -1,12 +1,14 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Home from './pages/Home.jsx';
+import NavBar from './components/NavBar';
+import Home from './pages/Home';
 import DietarySelection from './pages/DietarySelection';
-import PrintPreview from './pages/PrintPreview.jsx';
-import NavBar from './components/NavBar.jsx';
-import Footer from './components/Footer.jsx';
-import About from './pages/About.jsx';
-import Contact from './pages/Contact.jsx';
+import PrintPreview from './pages/PrintPreview';
+import About from './pages/About';
+import Contact from './pages/Contact';
+import Login from './pages/Login'
+import Register from './pages/Register'
+import Footer from './components/Footer';
 import './App.css';
 
 const App = () => {
@@ -20,6 +22,8 @@ const App = () => {
                     <Route path="/print" element={<PrintPreview />} />
                     <Route path="/about" element={<About />} />
                     <Route path="/contact" element={<Contact />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/register" element={<Register />} />
                 </Routes>
             </div>
             <Footer />

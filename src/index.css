@@ -21,3 +21,8 @@ body, .subtitle, .box {
 .box, .card {
     box-shadow: 0 0.5em 1em -0.125em hsla(0deg, 0%, 100%,0.1),0 0px 0 1px hsla(0deg, 0%, 100%,0.02);
 }
+
+.section {
+    margin-top: 6vh;
+    min-height: 85vh;
+}
