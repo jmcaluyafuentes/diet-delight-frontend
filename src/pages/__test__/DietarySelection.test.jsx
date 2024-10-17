@@ -59,7 +59,7 @@ describe('DietarySelection Component', () => {
     render(<DietarySelection />);
 
     // Check if the title and subtitle are rendered
-    expect(screen.getByText('Recipe Search')).toBeInTheDocument();
+    expect(screen.getByText('Search Recipes')).toBeInTheDocument();
     expect(screen.getByText('Select Your Dietary and Health Criteria')).toBeInTheDocument();
   });
 
