@@ -60,7 +60,7 @@ describe('App Component', () => {
     );
 
     // Check if the heading for the Search page is present
-    expect(screen.getByRole('heading', { name: /recipe search/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /search recipes/i })).toBeInTheDocument();
   });
 
   // Test for rendering the About page

@@ -34,8 +34,8 @@ const DietarySelection = () => {
     return (
         <main className="section">
             <div className="box">
-                <h1 className="title is-1 has-text-centered">Recipe Search</h1>
-                <h2 className="title is-3 mt-6 is-flex is-justify-content-center has-text-centered">Select Your Dietary and Health Criteria</h2>
+                <h1 className="title is-1 has-text-centered">Search Recipes</h1>
+                <h2 className="title is-3 is-flex is-justify-content-center has-text-centered">Select Your Dietary and Health Criteria</h2>
 
                 {/* Display error message if an error exists */}
                 <DisplayErrorMessage message={errorMessage} style={'no-option-selected'}/>

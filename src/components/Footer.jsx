@@ -2,7 +2,7 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <div className="hero-foot mb-4">
+    <div className="hero-foot">
       <div className="container">
           <div className="content has-text-centered">
               {/* Footer content with a brief description of the app */}

@@ -1,8 +1,11 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useCookies } from 'react-cookie';
 import './NavBar.css';
 
-const NavBar = () => {
+const NavBar = () => {  
+
+    const [cookies, _, removeCookies] = useCookies(["access_token"]);
 
     useEffect(() => {
         // Function to toggle menu visibility
@@ -39,6 +42,11 @@ const NavBar = () => {
         navbarItems.forEach(el => el.addEventListener('click', closeMenu));
 
     }, []);
+
+    // Logout handler function
+    const handleLogout = () => {
+        removeCookies("access_token");
+    }
 
     return (
         <nav className="navbar has-background-primary" role="navigation" aria-label="main navigation">
@@ -78,7 +86,7 @@ const NavBar = () => {
                         to="/search" 
                         className={`navbar-item has-text-black`}
                     >
-                        Search Recipe
+                        Recipes
                     </Link>
                     <Link 
                         to="/about" 
@@ -92,12 +100,22 @@ const NavBar = () => {
                     >
                         Contact
                     </Link>
-                    <Link
-                        to="/login"
-                        className={`navbar-item has-text-black`}
-                    >
-                        Login
-                    </Link>
+                    {!cookies.access_token ? (
+                        <Link
+                            to="/login"
+                            className={`navbar-item has-text-black`}
+                            >
+                                Login
+                        </Link> 
+                    )   :   (
+                        <Link
+                            to="/login"
+                            className={`navbar-item has-text-black`}
+                            onClick = {handleLogout}
+                        >
+                            Logout
+                        </Link>
+                    )}
                 </div>
             </div>
         </nav>

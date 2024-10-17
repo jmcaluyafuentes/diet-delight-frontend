@@ -1,10 +1,16 @@
-import React, { useState } from 'react'
-import './Register.css'
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import LoginRegisterForm from '../components/LoginRegisterForm';
+import Login from './Login';
+import './Register.css';
 
 const Register = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [registerStatus, setRegisterStatus] = useState('');
     const [message, setMessage] = useState('');
+
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -26,48 +32,42 @@ const Register = () => {
             const result = await response.json();
             
             if (!response.ok) {
-                throw new Error (`Registration failed. ${result.message}.`);
+                throw new Error ('Registration failed.');
             }
 
-            setMessage(`Registration successful. New user: '${result.username}'`)
-            setUsername('');
+            setRegisterStatus('Registration successful.')
+            setMessage(`New user: '${result.username}'`)
             setPassword('');
 
         } catch (error) {
             console.error(error.message);
-            setMessage(error.message);
+            setRegisterStatus(error.message);
+            setMessage(`Username '${username}' already exist.`);
         }
     };
+
+    useEffect(() => {
+        if (registerStatus === 'Registration successful.') {
+            navigate('/login', { state: { user: username } });
+        }
+    }, [registerStatus]);
 
     return (
         <main className="section is-flex is-align-items-center is-justify-content-center">
             <div>
-                <form onSubmit={handleSubmit} className="form-container box">
-                    <h2 className="title is-2 has-text-centered">Register</h2>
-                    <div>
-                        <label htmlFor="username">Username: </label>
-                        <input 
-                            type="text" 
-                            id="username" 
-                            value={username}
-                            onChange={(e) => setUsername(e.target.value)}
-                            required
-                        />
-                    </div>
-                    <div>
-                        <label htmlFor="password">Password: </label>
-                        <input 
-                            type="password" 
-                            id="password" 
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            required
-                            className="mt-2"
-                        />
-                    </div>
-                    <button type="submit" className="button is-warning is-normal mt-5 mb-5">Register</button>
-                </form>
-                <div>{message}</div>
+                <LoginRegisterForm
+                    label={'Register'}
+                    username={username}
+                    setUsername={setUsername}
+                    password={password}
+                    setPassword={setPassword}
+                    handleSubmit={handleSubmit}
+                    option={'Login'}
+                />
+                
+                {/* Display error message if registration failed */}
+                {registerStatus && <p>{registerStatus}</p>}
+                {message && <p>{message}</p>}
             </div>
         </main>
     )
