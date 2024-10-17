@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useCookies } from 'react-cookie';
 import LoginRegisterForm from '../components/LoginRegisterForm';
 
 const Login = () => {
     const location = useLocation();
-    const { user } = location.state || {};
+    const {user} = location.state || {};
     const navigate = useNavigate();
+    const [_, setCookies] = useCookies(["access_token"]);
         
     const [username, setUsername] = useState(user || '');
     const [password, setPassword] = useState('');
@@ -31,18 +33,18 @@ const Login = () => {
             const result = await response.json();
             
             if (!response.ok) {
-                throw new Error (result.message);
+                throw new Error ((result.message.includes('User not found') ? 'Username or password is incorrect' : result.message));
             }
 
             window.localStorage.setItem('userID', result.userID);
 
+            setCookies("access_token", result.token);
             navigate('/');
         } catch (error) {
             console.error(error.message)
             setMessage(`${error.message}!`)
         }
     }
-
 
     return (
         <main className="section is-flex is-align-items-center is-justify-content-center">
@@ -56,7 +58,7 @@ const Login = () => {
                     handleSubmit={handleSubmit}
                     option={'Register'}
                     />
-                {message ?? <p>{message}</p>}
+                {message && <p>{message}</p>}
             </div>
         </main>
     )
