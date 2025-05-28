@@ -1,5 +1,3 @@
-import React from 'react';
-
 const Contact = () => {
     return (
         <main className="section is-flex is-align-items-center is-justify-content-center">

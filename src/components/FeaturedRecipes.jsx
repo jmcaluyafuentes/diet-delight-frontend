@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import LoadingSpinner from './LoadingSpinner';
 import { dietOptions, healthOptions } from '../utils/dietHealthOptions.js';
 import { fetchRecipes } from '../utils/fetchRecipes.js';
@@ -9,7 +9,7 @@ import RecipeDietLabels from './recipeProperties/RecipeDietLabels.jsx';
 import RecipeSource from './recipeProperties/RecipeSource.jsx';
 import AddToPrintButton from './AddToPrintButton.jsx';
 import PrintToPDFButton from './PrintToPDFButton.jsx';
-import './FeaturedRecipes.css';
+import './css/FeaturedRecipes.css';
 
 // Utility function to get a random element from an array
 const getRandomElement = (array) => array[Math.floor(Math.random() * array.length)];

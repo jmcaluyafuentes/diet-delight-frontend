@@ -1,5 +1,4 @@
-import React from 'react';
-import './LoadingSpinner.css';
+import './css/LoadingSpinner.css';
 
 // Functional component to display a loading spinner
 const LoadingSpinner = () => {

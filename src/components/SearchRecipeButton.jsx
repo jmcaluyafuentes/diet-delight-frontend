@@ -1,6 +1,5 @@
-import React from 'react'
 import { fetchRecipes } from '../utils/fetchRecipes.js';
-import './SearchRecipeButton.css'
+import './css/SearchRecipeButton.css'
 
 const SearchRecipeButton = ({ dietCriteria, healthCriteria, setErrorMessage, setRecipes, setIsSearchClicked, setIsLoading }) => {
     // Function to handle the search button click

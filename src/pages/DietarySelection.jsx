@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { dietOptions, healthOptions } from '../utils/dietHealthOptions.js';
 import ShowRecipes from './ShowRecipes.jsx';
 import CheckboxGroup from '../components/CheckboxGroup.jsx';
 import DisplayErrorMessage from '../components/DisplayErrorMessage.jsx'
 import SearchRecipeButton from '../components/SearchRecipeButton.jsx'
 import LoadingSpinner from '../components/LoadingSpinner.jsx';
-import './DietarySelection.css'
+import './css/DietarySelection.css'
 
 const DietarySelection = () => {
     const [dietCriteria, setDietCriteria] = useState([]);

@@ -1,6 +1,5 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
-import './Herobanner.css'
+import './css/Herobanner.css'
 
 function HeroBanner({ backgroundImage }) {
   // Inline style for the hero banner background image

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import DisplayErrorMessage from '../components/DisplayErrorMessage';
 import AddToPrintButton from '../components/AddToPrintButton';
 import PrintToPDFButton from '../components/PrintToPDFButton';
@@ -12,7 +12,7 @@ import RecipeDishClassifications from '../components/recipeProperties/RecipeDish
 import RecipeIngredients from '../components/recipeProperties/RecipeIngredients.jsx';
 import RecipePreparation from '../components/recipeProperties/RecipePreparation.jsx';
 import RecipeSource from '../components/recipeProperties/RecipeSource.jsx';
-import './ShowRecipes.css'
+import './css/ShowRecipes.css'
 
 const ShowRecipes = ({ recipes }) => {
     const [selectedRecipes, setSelectedRecipes] = useState(new Set());

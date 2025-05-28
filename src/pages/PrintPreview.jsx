@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import './PrintPreview.css';
+import './css/PrintPreview.css';
 
 const PrintPreview = () => {
   const navigate = useNavigate();

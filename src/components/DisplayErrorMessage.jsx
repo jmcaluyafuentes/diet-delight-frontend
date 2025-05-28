@@ -1,5 +1,4 @@
-import React from 'react'
-import './DisplayErrorMessage.css'
+import './css/DisplayErrorMessage.css'
 
 const DisplayErrorMessage = ({ message, style }) => {
     // If message prop is empty or null, return null to render nothing

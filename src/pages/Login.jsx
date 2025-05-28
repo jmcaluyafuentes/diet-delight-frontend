@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 import LoginRegisterForm from '../components/LoginRegisterForm';
@@ -7,7 +7,7 @@ const Login = () => {
     const location = useLocation();
     const {user} = location.state || {};
     const navigate = useNavigate();
-    const [_, setCookies] = useCookies(["access_token"]);
+    const [, setCookies] = useCookies(["access_token"]);
         
     const [username, setUsername] = useState(user || '');
     const [password, setPassword] = useState('');

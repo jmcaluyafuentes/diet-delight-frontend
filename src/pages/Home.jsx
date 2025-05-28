@@ -1,7 +1,6 @@
-import React from 'react';
 import HeroBanner from '../components/Herobanner';
 import FeaturedRecipes from '../components/FeaturedRecipes';
-import './Home.css'
+import './css/Home.css'
 
 const Home = () => {
     return (
